@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <system>
+            <children>
+                <redismanager translate="title">
+                    <title>Redis Caches &amp; Sessions</title>
+                    <sort_order>95</sort_order>
+                    <action>adminhtml/redismanager</action>
+                </redismanager>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <redismanager translate="title" module="redismanager">
+                                <title>Redis Caches &amp; Sessions</title>
+                            </redismanager>
+                            <config>
+                                <children>
+                                    <redismanager translate="title" module="redismanager">
+                                        <title>Redis Caches &amp; Sessions</title>
+                                    </redismanager>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

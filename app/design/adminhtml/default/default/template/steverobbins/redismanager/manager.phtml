@@ -1,0 +1,52 @@
+<?php
+/**
+ * @var Steverobbins_Redismanager_Adminhtml_RedismanagerController $this
+ */
+$_services = $this->helper('redismanager')->getServices();
+?>
+<div class="redismanager manager">
+    <div class="content-header">
+        <h3><?php echo $this->__('Redis Caches & Sessions') ?></h3>
+    </div>
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4><?php echo $this->__('Redis Services') ?></h4>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Name') ?></th>
+                <th><?php echo $this->__('Host') ?></th>
+                <th><?php echo $this->__('Port') ?></th>
+                <th><?php echo $this->__('Database') ?></th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (count($_services)): ?>
+            <?php
+                foreach ($_services as $_id => $_service):
+            ?>
+            <tr>
+                <td><?php echo $_service['name'] ?></td>
+                <td><?php echo $_service['host'] ?></td>
+                <td><?php echo $_service['port'] ?></td>
+                <td><?php echo $_service['db'] ?></td>
+                <td><button onclick="window.location = '<?php
+                    echo $this->getUrl('*/*/clean', array(
+                        '_query' => array(
+                            'id' => $_id
+                        )
+                    ))
+                ?>'"><?php echo $this->__("Clear") ?></button></td>
+            </tr>
+            <?php endforeach ?>
+            <?php else: ?>
+            <tr>
+                <td class="empty-text a-center" colspan="100"><?php echo $this->__('No Redis services were found.') ?></td>
+            </tr>
+            <?php endif ?>
+        </tbody>
+    </table>
+</div>

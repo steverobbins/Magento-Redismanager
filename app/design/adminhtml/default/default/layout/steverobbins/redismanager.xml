@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_redismanager_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>steverobbins/redismanager/global.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="redismanager/adminhtml_manager" name="redismanager.manager" template="steverobbins/redismanager/manager.phtml">
+            </block>
+        </reference>
+    </adminhtml_redismanager_index>
+</layout>

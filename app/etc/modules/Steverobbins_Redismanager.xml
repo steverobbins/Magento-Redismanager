@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Steverobbins_Redismanager>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Adminhtml />
+                <!--Cm_RedisSession /-->
+            </depends>
+        </Steverobbins_Redismanager>
+    </modules>
+</config>
