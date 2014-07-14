@@ -7,16 +7,16 @@
             <frontend_type>text</frontend_type>
             <sort_order>920</sort_order>
             <show_in_default>1</show_in_default>
-            <show_in_website>1</show_in_website>
-            <show_in_store>1</show_in_store>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
             <groups>
                 <settings translate="label">
                     <label>Settings</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
                     <fields>
                         <auto translate="label comment">
                             <label>Automatically detect Redis services</label>
@@ -24,19 +24,19 @@
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
                             <comment>If No, use manual configuration below</comment>
                         </auto>
-                        <manual translate="redismanager">
+                        <manual translate="label">
                             <label>Manual Configuration</label>
                             <frontend_model>redismanager/adminhtml_system_config_form_field_manual</frontend_model>
                             <backend_model>redismanager/source_manual</backend_model>
                             <validate>required-entry</validate>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
                         </manual>
                     </fields>
                 </settings>
