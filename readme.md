@@ -5,7 +5,7 @@ Magento's missing utility for managing Redis services
 
 ## Features
 
-Automatic or manual configuration in System > Config > Advances > Redis Caches & Sessions
+Automatic or manual configuration in System > Config > Advanced > Redis Caches & Sessions
 
 ![Manual Configuration](http://i.imgur.com/Xxj7cTp.png)
 
