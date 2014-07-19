@@ -23,3 +23,7 @@ Flush databases directly from Magento's admin panel
     cd /path/to/magento/
     modman init
     modman clone https://github.com/steverobbins/Magento-Redismanager.git
+
+## License
+
+[Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
