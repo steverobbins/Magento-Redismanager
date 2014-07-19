@@ -41,6 +41,15 @@
                 </redismanager>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Steverobbins_Redismanager>
+                    <files>
+                        <default>Steverobbins_Redismanager.csv</default>
+                    </files>
+                </Steverobbins_Redismanager>
+            </modules>
+        </translate>
     </adminhtml>
     <default>
         <redismanager>

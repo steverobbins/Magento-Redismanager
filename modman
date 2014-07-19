@@ -2,4 +2,5 @@ app/etc/modules/Steverobbins_Redismanager.xml                             app/et
 app/code/community/Steverobbins/Redismanager                              app/code/community/Steverobbins/Redismanager
 app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml
 app/design/adminhtml/default/default/template/steverobbins/redismanager   app/design/adminhtml/default/default/template/steverobbins/redismanager
+app/locale/en_US/Steverobbins_Redismanager.csv                            app/locale/en_US/Steverobbins_Redismanager.csv
 skin/adminhtml/default/default/steverobbins/redismanager                  skin/adminhtml/default/default/steverobbins/redismanager

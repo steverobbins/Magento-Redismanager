@@ -1,0 +1,20 @@
+"%s database flushed","%s database flushed"
+"Automatically detect Redis services","Automatically detect Redis services"
+Database,Database
+"Flush DB","Flush DB"
+"Flush Databases","Flush Databases"
+Host,Host
+"Id Count","Id Count"
+"If No, use manual configuration below","If No, use manual configuration below"
+"Manual Configuration","Manual Configuration"
+Name,Name
+"No Redis services were found.","No Redis services were found."
+Port,Port
+"Redis Caches & Sessions","Redis Caches & Sessions"
+"Redis Manager","Redis Manager"
+Session,Session
+Settings,Settings
+Statistics,Statistics
+System,System
+"Tag Count","Tag Count"
+"Unable to flush Redis database","Unable to flush Redis database"
