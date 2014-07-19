@@ -1,6 +1,6 @@
 <?php
 /**
- * @var Steverobbins_Redismanager_Adminhtml_RedismanagerController $this
+ * @var Steverobbins_Redismanager_Block_Adminhtml_Manager $this
  */
 $_services = $this->helper('redismanager')->getServices();
 ?>
@@ -8,45 +8,101 @@ $_services = $this->helper('redismanager')->getServices();
     <div class="content-header">
         <h3><?php echo $this->__('Redis Caches & Sessions') ?></h3>
     </div>
-    <div class="entry-edit">
-        <div class="entry-edit-head">
-            <h4><?php echo $this->__('Redis Services') ?></h4>
-        </div>
-    </div>
-    <table>
-        <thead>
+    <form action="<?php echo $this->getUrl('*/*/mass') ?>" method="post" id="redisServices">
+        <input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+        <table cellspacing="0" cellpadding="0" class="massaction">
+            <tbody>
             <tr>
-                <th><?php echo $this->__('Name') ?></th>
-                <th><?php echo $this->__('Host') ?></th>
-                <th><?php echo $this->__('Port') ?></th>
-                <th><?php echo $this->__('Database') ?></th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (count($_services)): ?>
-            <?php
-                foreach ($_services as $_id => $_service):
-            ?>
-            <tr>
-                <td><?php echo $_service['name'] ?></td>
-                <td><?php echo $_service['host'] ?></td>
-                <td><?php echo $_service['port'] ?></td>
-                <td><?php echo $_service['db'] ?></td>
-                <td><button onclick="window.location = '<?php
-                    echo $this->getUrl('*/*/clean', array(
-                        '_query' => array(
-                            'id' => $_id
-                        )
-                    ))
-                ?>'"><?php echo $this->__("Clear") ?></button></td>
-            </tr>
-            <?php endforeach ?>
-            <?php else: ?>
-            <tr>
-                <td class="empty-text a-center" colspan="100"><?php echo $this->__('No Redis services were found.') ?></td>
-            </tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+                <td>
+                    <a href="#" onclick="return redisCheckAll()">Select All</a>
+                    <span class="separator">|</span>
+                    <a href="#" onclick="return redisCheckNone()">Unselect All</a>
+                </td>
+                <td>
+                    <div class="right">
+                        <div class="entry-edit">
+                            <fieldset>
+                                <span class="field-row">
+                                    <label>Actions</label>
+                                    <select id="redis_grid_massaction-select" class="required-entry select absolute-advice local-validation">
+                                        <option value="flushdb">Flush DBs</option>
+                                    </select>
+                                </span>
+                                <span class="field-row">
+                                    <button title="Submit" class="scalable"><span><span><span>Submit</span></span></span></button>
+                                </span>
+                            </fieldset>
+                        </div>
+                    </div>
+                </td>
+            </tbody>
+        </table>
+        <table class="services">
+            <col width="20" />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col width="100" />
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th><?php echo $this->__('Name') ?></th>
+                    <th><?php echo $this->__('Host') ?></th>
+                    <th><?php echo $this->__('Port') ?></th>
+                    <th><?php echo $this->__('Database') ?></th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($_services)): ?>
+                <?php
+                    foreach ($_services as $_id => $_service):
+                ?>
+                <tr onclick="redisCheckRow(this)">
+                    <td><input type="checkbox" name="service[]" value="<?php echo $_id ?>" /></td>
+                    <td><?php echo $_service['name'] ?></td>
+                    <td><?php echo $_service['host'] ?></td>
+                    <td><?php echo $_service['port'] ?></td>
+                    <td><?php echo $_service['db'] ?></td>
+                    <td><button onclick="window.location = '<?php
+                        echo $this->getUrl('*/*/flushDb', array(
+                            '_query' => array(
+                                'id' => $_id
+                            )
+                        ))
+                    ?>'; return false;"><?php echo $this->__("Flush DB") ?></button></td>
+                </tr>
+                <?php endforeach ?>
+                <?php else: ?>
+                <tr>
+                    <td class="empty-text a-center" colspan="100"><?php echo $this->__('No Redis services were found.') ?></td>
+                </tr>
+                <?php endif ?>
+            </tbody>
+        </table>
+    </form>
 </div>
+<script>
+//<![CDATA[
+var redisForm = $('redisServices');
+function redisCheckAll() {
+    redisForm.getElements('checkbox').each(function(box) {
+        box.checked = true; 
+    });
+}
+function redisCheckNone() {
+    redisForm.getElements('checkbox').each(function(box) {
+        box.checked = false; 
+    });
+}
+function redisCheckRow(tr) {
+    var box = tr.getElementsByTagName('input');
+    for (var i = 0; i < box.length; i++) {
+        if (box[i].type === 'checkbox') {
+            box[i].checked = !box[i].checked;
+        }
+    }   
+}
+//]]>
+</script>

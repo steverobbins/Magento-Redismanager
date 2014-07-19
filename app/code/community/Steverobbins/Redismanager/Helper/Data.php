@@ -55,7 +55,7 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
                         'Mage_Cache_Backend_Redis'
                     ))) {
                         $this->_services[] = $this->_buildServiceArray(
-                            $this->__('Cache'),
+                            $this->__(str_replace('_', ' ', uc_words($cacheType))),
                             $node[0]->backend_options->server,
                             $node[0]->backend_options->port,
                             $node[0]->backend_options->password,
