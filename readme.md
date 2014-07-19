@@ -11,7 +11,7 @@ Automatic or manual configuration in System > Config > Advanced > Redis Caches &
 
 Flush databases directly from Magento's admin panel
 
-![Clear DBs](http://i.imgur.com/EnifvY0.png)
+![Clear DBs](http://i.imgur.com/Lq8aOYo.png)
 
 ## Installation
 
