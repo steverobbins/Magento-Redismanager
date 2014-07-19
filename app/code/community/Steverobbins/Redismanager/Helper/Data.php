@@ -110,19 +110,19 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
      * @param  string $port
      * @param  string $pass
      * @param  string $db
-     * @return Mage_Cache_Backend_Redis|Cm_Cache_Backend_Redis
+     * @return Steverobbins_Redismanager_Model_Backend_Redis_Cm|Steverobbins_Redismanager_Model_Backend_Redis_Mage
      */
     public function getRedisInstance($host, $port, $pass, $db)
     {
         if (class_exists('Mage_Cache_Backend_Redis')) {
-            return new Mage_Cache_Backend_Redis(array(
+            return Mage::getModel('redismanager/backend_redis_mage', array(
                 'server'   => $host,
                 'port'     => $port,
                 'password' => $pass,
                 'database' => $db
             ));
         } else if (class_exists('Cm_Cache_Backend_Redis')) {
-            return new Cm_Cache_Backend_Redis(array(
+            return Mage::getModel('redismanager/backend_redis_cm', array(
                 'server'   => $host,
                 'port'     => $port,
                 'password' => $pass,

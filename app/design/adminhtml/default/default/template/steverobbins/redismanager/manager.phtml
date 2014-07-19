@@ -92,6 +92,7 @@ $_services = $this->helper('redismanager')->getServices();
                 <th><?php echo $this->__('Name') ?></th>
                 <th><?php echo $this->__('Id Count') ?></th>
                 <th><?php echo $this->__('Tag Count') ?></th>
+                <th><?php echo $this->__('Key Count') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -109,6 +110,7 @@ $_services = $this->helper('redismanager')->getServices();
                 <td><?php echo $_service['name'] ?></td>
                 <td><?php echo count($_client->getIds()) ?></td>
                 <td><?php echo count($_client->getTags()) ?></td>
+                <td><?php echo count($_client->getRedis()->keys('*')) ?></td>
             </tr>
             <?php endforeach ?>
         </tbody>
