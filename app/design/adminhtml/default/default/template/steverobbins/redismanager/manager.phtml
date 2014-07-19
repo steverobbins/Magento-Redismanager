@@ -6,7 +6,7 @@ $_services = $this->helper('redismanager')->getServices();
 ?>
 <div class="redismanager manager">
     <div class="content-header">
-        <h3><?php echo $this->__('Flush Services') ?></h3>
+        <h3><?php echo $this->__('Flush Databases') ?></h3>
     </div>
     <form action="<?php echo $this->getUrl('*/*/mass') ?>" method="post" id="redisServices">
         <input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
