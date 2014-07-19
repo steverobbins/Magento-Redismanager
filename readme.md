@@ -13,6 +13,10 @@ Flush databases directly from Magento's admin panel
 
 ![Clear DBs](http://i.imgur.com/Lq8aOYo.png)
 
+Usage Statistics
+
+![Usage Statistics](http://i.imgur.com/YNdTjOy.png)
+
 ## Installation
 
 1. Download the files and copy to your Magento installation folder.

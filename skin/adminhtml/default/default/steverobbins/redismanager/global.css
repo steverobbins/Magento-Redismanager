@@ -37,3 +37,6 @@
 .redismanager .entry-edit-head .actions {
     float: right;
 }
+.redismanager * + .content-header {
+    margin-top: 15px;
+}
