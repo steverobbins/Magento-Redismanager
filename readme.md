@@ -7,6 +7,8 @@ Magento's missing utility for managing Redis services
 
 Automatic or manual configuration in System > Config > Advanced > Redis Caches & Sessions
 
+Ideal for when caching services differ from server to server
+
 ![Manual Configuration](http://i.imgur.com/Xxj7cTp.png)
 
 Flush databases directly from Magento's admin panel
