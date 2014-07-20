@@ -16,7 +16,7 @@ Magento's missing utility for managing Redis services
 
 ## Screenhots
 
-![Manage Services](http://i.imgur.com/JGlA5xM.png)
+![Manage Services](http://i.imgur.com/TuHmWan.png)
 
 ![View Keys](http://i.imgur.com/VGjLgGE.png)
 

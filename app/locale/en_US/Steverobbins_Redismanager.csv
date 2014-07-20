@@ -1,29 +1,33 @@
 "%s database flushed","%s database flushed"
 "Automatically detect Redis services","Automatically detect Redis services"
 Back,Back
+"Connected Clients","Connected Clients"
 Database,Database
 "Delete Keys","Delete Keys"
 "Delete Matching Keys","Delete Matching Keys"
 "Flush DB","Flush DB"
 "Flush Databases","Flush Databases"
 Host,Host
-"Id Count","Id Count"
 "If No, use manual configuration below","If No, use manual configuration below"
 "Key Count","Key Count"
 "Keys for %s","Keys for %s"
+"Last Save","Last Save"
 "Manual Configuration","Manual Configuration"
 "Matched Keys (one per line):","Matched Keys (one per line):"
+"Memory / Peak Memory","Memory / Peak Memory"
 Name,Name
 "No Redis services were found.","No Redis services were found."
 Port,Port
 "Redis Caches & Sessions","Redis Caches & Sessions"
 "Redis Manager","Redis Manager"
+Role,Role
 Session,Session
 Settings,Settings
+"Slaves Count","Slaves Count"
 Statistics,Statistics
 System,System
-"Tag Count","Tag Count"
 "Total: %s","Total: %s"
 "Unable to flush Redis database","Unable to flush Redis database"
+"Updtime (days)","Updtime (days)"
 "View Keys","View Keys"
 view,view

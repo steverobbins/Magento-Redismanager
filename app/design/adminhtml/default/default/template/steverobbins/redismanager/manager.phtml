@@ -83,6 +83,8 @@ $_services = $this->helper('redismanager')->getServices();
         </table>
     </form>
     <?php if (count($_services)): ?>
+    <?php $_coreHelper = $this->helper('core') ?>
+    <?php $_date = Mage::getSingleton('core/date') ?>
     <div class="content-header">
         <h3><?php echo $this->__('Delete Matching Keys') ?></h3>
     </div>
@@ -107,9 +109,13 @@ $_services = $this->helper('redismanager')->getServices();
         <thead>
             <tr>
                 <th><?php echo $this->__('Name') ?></th>
-                <th><?php echo $this->__('Id Count') ?></th>
-                <th><?php echo $this->__('Tag Count') ?></th>
                 <th><?php echo $this->__('Key Count') ?></th>
+                <th><?php echo $this->__('Updtime (days)') ?></th>
+                <th><?php echo $this->__('Connected Clients') ?></th>
+                <th><?php echo $this->__('Memory / Peak Memory') ?></th>
+                <th><?php echo $this->__('Role') ?></th>
+                <th><?php echo $this->__('Slaves Count') ?></th>
+                <th><?php echo $this->__('Last Save') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -122,15 +128,20 @@ $_services = $this->helper('redismanager')->getServices();
                             $_service['password'],
                             $_service['db']
                         );
+                    $_info = $_client->getRedis()->info();
             ?>
             <tr>
                 <td><?php echo $_service['name'] ?></td>
-                <td><?php echo count($_client->getIds()) ?></td>
-                <td><?php echo count($_client->getTags()) ?></td>
                 <td><?php echo count($_client->getRedis()->keys('*')) ?> (<a href="<?php echo $this->getUrl('*/*/keys', array(
                     '_query' => array(
                         'id' => $_id
                     ))) ?>"><?php echo $this->__('view') ?></a>)</td>
+                <td><?php echo $_info['uptime_in_days'] ?></td>
+                <td><?php echo $_info['connected_clients'] ?></td>
+                <td><?php echo $_info['used_memory_human'] ?> / <?php echo $_info['used_memory_peak_human'] ?></td>
+                <td><?php echo $_info['role'] ?></td>
+                <td><?php echo $_info['connected_slaves'] ?></td>
+                <td><?php echo $_coreHelper->formatTime($_date->timestamp($_info['rdb_last_save_time']), Mage_Core_Model_Locale::FORMAT_TYPE_LONG) ?></td>
             </tr>
             <?php endforeach ?>
         </tbody>
