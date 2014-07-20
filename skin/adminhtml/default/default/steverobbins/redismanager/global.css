@@ -40,3 +40,7 @@
 .redismanager * + .content-header {
     margin-top: 15px;
 }
+#redisKeys {
+    min-width: 300px;
+    min-height: 150px
+}

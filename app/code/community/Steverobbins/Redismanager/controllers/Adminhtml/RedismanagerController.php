@@ -21,6 +21,21 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
         $this->_setActiveMenu('system/redismanager');
         $this->renderLayout();
     }
+    
+    /**
+     * View keys page
+     *
+     * @return void
+     */
+    public function keysAction()
+    {
+        $this->_title($this->__('System'))
+             ->_title($this->__('Redis Manager'))
+             ->_title($this->__('View Keys'));
+        $this->loadLayout();
+        $this->_setActiveMenu('system/redismanager');
+        $this->renderLayout();
+    }
 
     /**
      * Flush a Redis DB
@@ -30,13 +45,11 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
     public function flushDbAction()
     {
         $id       = $this->getRequest()->getParam('id');
-        $helper   = $this->_getHelper();
-        $services = $helper->getServices();
-        $service  = $services[$id];
+        $services = $this->_getHelper()->getServices();
         if ($id === false || !isset($services[$id])) {
             Mage::getSingleton('core/session')->addError($this->__('Unable to flush Redis database')); 
         } else {
-            $this->_flushDb($service);
+            $this->_flushDb($services[$id]);
         }
         $this->_redirect('*/*');
     }
@@ -48,12 +61,62 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      */
     public function massAction()
     {
-        $helper   = $this->_getHelper();
-        $services = $helper->getServices();
-        foreach ($this->getRequest()->getPost('service') as $id) {
-            $this->_flushDb($services[$id]);
+        $services = $this->_getHelper()->getServices();
+        $ids      = $this->getRequest()->getPost('service');
+        if (count($ids)) {
+            foreach ($this->getRequest()->getPost('service') as $id) {
+                $this->_flushDb($services[$id]);
+            }
         }
         $this->_redirect('*/*');
+    }
+
+    /**
+     * Flush matching keys
+     *
+     * @return void
+     */
+    public function flushByKeyAction()
+    {
+        $keys       = $this->getRequest()->getPost('redisKeys');
+        $clearCount = 0;
+        if ($keys) {
+            $keys       = explode("\n", $keys);
+            $keys       = array_map(array($this, '_prepareKey'), $keys);
+            $helper     = $this->_getHelper();
+            $services   = $helper->getServices();
+            foreach ($services as $service) {
+                $redis = $this->_getHelper()->getRedisInstance(
+                    $service['host'],
+                    $service['port'],
+                    $service['password'],
+                    $service['db']
+                )->getRedis();
+                $matched = array();
+                foreach ($keys as $key) {
+                    $matched = array_merge($matched, $redis->keys($key));
+                }
+                if (count($matched)) {
+                    $clearCount += $redis->del($matched);
+                }
+            }
+        }
+        Mage::getSingleton('core/session')->addSuccess($this->__(
+            '%s key(s) cleared',
+            $clearCount
+        ));
+        $this->_redirect('*/*');
+    }
+
+    /**
+     * Prepare keys for search
+     *
+     * @param  string
+     * @return string
+     */
+    protected function _prepareKey($key)
+    {
+        return '*' . trim($key) . '*';
     }
 
     /**
@@ -82,7 +145,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
                 $service['password'],
                 $service['db']
             );
-            $redis->clean();
+            $redis->clean(Zend_Cache::CLEANING_MODE_ALL);
             Mage::getSingleton('core/session')->addSuccess($this->__('%s database flushed', $service['name'])); 
         } catch (Exception $e) {
             Mage::getSingleton('core/session')->addError($e->getMessage()); 

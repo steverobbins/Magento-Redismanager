@@ -60,12 +60,12 @@ $_services = $this->helper('redismanager')->getServices();
                     foreach ($_services as $_id => $_service):
                 ?>
                 <tr onclick="redisCheckRow(this)">
-                    <td><input type="checkbox" name="service[]" value="<?php echo $_id ?>" /></td>
+                    <td onclick="return false"><input type="checkbox" name="service[]" value="<?php echo $_id ?>" /></td>
                     <td><?php echo $_service['name'] ?></td>
                     <td><?php echo $_service['host'] ?></td>
                     <td><?php echo $_service['port'] ?></td>
                     <td><?php echo $_service['db'] ?></td>
-                    <td><button onclick="window.location = '<?php
+                    <td onclick="return false"><button onclick="window.location = '<?php
                         echo $this->getUrl('*/*/flushDb', array(
                             '_query' => array(
                                 'id' => $_id
@@ -83,6 +83,23 @@ $_services = $this->helper('redismanager')->getServices();
         </table>
     </form>
     <?php if (count($_services)): ?>
+    <div class="content-header">
+        <h3><?php echo $this->__('Delete Matching Keys') ?></h3>
+    </div>
+    <form id="flushByKey" action="<?php echo $this->getUrl('*/*/flushByKey') ?>" method="post">
+        <input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+        <fieldset>
+            <div>
+                <label for="redisKeys"><?php echo $this->__('Matched Keys (one per line):') ?></label>
+            </div>
+            <div>
+                <textarea id="redisKeys" name="redisKeys"></textarea>
+            </div>
+            <div>
+                <button><?php echo $this->__('Delete Keys') ?></button>
+            </div>
+        </fieldset>
+    </form>
     <div class="content-header">
         <h3><?php echo $this->__('Statistics') ?></h3>
     </div>
@@ -110,7 +127,10 @@ $_services = $this->helper('redismanager')->getServices();
                 <td><?php echo $_service['name'] ?></td>
                 <td><?php echo count($_client->getIds()) ?></td>
                 <td><?php echo count($_client->getTags()) ?></td>
-                <td><?php echo count($_client->getRedis()->keys('*')) ?></td>
+                <td><?php echo count($_client->getRedis()->keys('*')) ?> (<a href="<?php echo $this->getUrl('*/*/keys', array(
+                    '_query' => array(
+                        'id' => $_id
+                    ))) ?>"><?php echo $this->__('view') ?></a>)</td>
             </tr>
             <?php endforeach ?>
         </tbody>

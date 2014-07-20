@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var Steverobbins_Redismanager_Block_Adminhtml_Keys $this
+ */
+$_keys = $this->getKeys();
+?>
+<div class="redismanager manager">
+    <div class="content-header">
+        <h3>
+            <?php echo $this->__('Keys for %s', $this->getName()) ?>
+        </h3>
+        <button class="back right" onclick="window.location = '<?php echo $this->getUrl('*/*') ?>'"><span><span><span><?php echo $this->__('Back') ?></span></span></span></button>
+
+    </div>
+</div>
+<p><strong><?php echo $this->__('Total: %s', count($_keys)) ?></strong></p>
+<ul>
+<?php foreach($_keys as $key): ?>
+    <li><?php echo $key ?></li>
+<?php endforeach ?>
+</ul>
