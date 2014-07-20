@@ -13,7 +13,7 @@ Ideal for when caching services differ from server to server.
 
 Flush databases directly from Magento's admin panel
 
-Though caches can be cleared via native Cache Management, sometimes keys are missed.  There is also no functionality to clear sessions.  Magento Redis Manager gives you this ability.
+Though caches can be cleared via native Cache Management, sometimes keys are missed.  There is also no functionality to clear sessions.  Magento Redis Manager gives you this ability!
 
 ![Clear DBs](http://i.imgur.com/Lq8aOYo.png)
 
