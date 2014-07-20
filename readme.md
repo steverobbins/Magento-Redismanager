@@ -14,7 +14,7 @@ Magento's missing utility for managing Redis services
 5. View usage statistics
 
 
-## Screenhots
+## Screenshots
 
 ![Manage Services](http://i.imgur.com/TuHmWan.png)
 
