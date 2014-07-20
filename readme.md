@@ -6,12 +6,12 @@ Magento's missing utility for managing Redis services
 ## Features
 
 1. Automatic or manual configuration in System > Config > Advanced > Redis Caches & Sessions
- * Ideal for when caching services differ from server to server.
+ * Ideal for when caching services differ in load balanced environments
 2. Flush databases directly from Magento's admin panel
  * Though caches can be cleared via native Cache Management, sometimes keys are missed.  There is also no functionality to clear sessions.  Magento Redis Manager gives you this ability!
 3. Delete cache keys by matched expression
 4. View cache keys
-5. View Usage Statistics
+5. View usage statistics
 
 
 ## Screenhots
