@@ -148,10 +148,10 @@ $_services = $this->helper('redismanager')->getServices();
                     ))) ?>"><?php echo $this->__('view') ?></a>)</td>
                 <td><?php echo $this->__(
                     '%s days, %s hours, %s minutes, %s seconds',
-                    floor($_info['uptime_in_seconds'] / 86400),
-                    floor($_info['uptime_in_seconds'] / 3600),
-                    floor($_info['uptime_in_seconds'] / 60) % 60,
-                    floor($_info['uptime_in_seconds'] % 60)
+                    floor($_uptime / 86400),
+                    floor($_uptime / 3600),
+                    floor($_uptime / 60) % 60,
+                    floor($_uptime % 60)
                 ) ?></td>
                 <td><?php echo $_info['connected_clients'] ?></td>
                 <td><?php echo $_info['used_memory_human'] ?> / <?php echo $_info['used_memory_peak_human'] ?></td>
