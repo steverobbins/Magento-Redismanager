@@ -18,6 +18,11 @@ class Steverobbins_Redismanager_Block_Adminhtml_Keys
     protected $_helper;
 
     /**
+     * @var array
+     */
+    protected $_service;
+
+    /**
      * Get all keys for client
      * 
      * @return array
@@ -55,12 +60,15 @@ class Steverobbins_Redismanager_Block_Adminhtml_Keys
      */
     protected function _getService()
     {
-        $id       = $this->getRequest()->getParam('id');
-        $services = $this->_getHelper()->getServices();
-        if (isset($services[$id])) {
-            return $services[$id];
+        if (is_null($this->_service)) {
+            $id       = $this->getRequest()->getParam('id');
+            $services = $this->_getHelper()->getServices();
+            if (isset($services[$id])) {
+                $this->_service = $services[$id];
+            }
+            $this->_service = false;
         }
-        return false;
+        return $this->_service;
     }
 
     /**
