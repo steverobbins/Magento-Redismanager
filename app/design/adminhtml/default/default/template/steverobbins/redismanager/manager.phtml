@@ -119,7 +119,7 @@ $_services = $this->helper('redismanager')->getServices();
             <tr>
                 <th><?php echo $this->__('Name') ?></th>
                 <th><?php echo $this->__('Key Count') ?></th>
-                <th><?php echo $this->__('Updtime (days)') ?></th>
+                <th><?php echo $this->__('Updtime') ?></th>
                 <th><?php echo $this->__('Connected Clients') ?></th>
                 <th><?php echo $this->__('Memory / Peak Memory') ?></th>
                 <th><?php echo $this->__('Role') ?></th>
@@ -138,6 +138,7 @@ $_services = $this->helper('redismanager')->getServices();
                             $_service['db']
                         );
                     $_info = $_client->getRedis()->info();
+                    $_uptime = $_info['uptime_in_seconds'];
             ?>
             <tr>
                 <td><?php echo $_service['name'] ?></td>
@@ -145,7 +146,13 @@ $_services = $this->helper('redismanager')->getServices();
                     '_query' => array(
                         'id' => $_id
                     ))) ?>"><?php echo $this->__('view') ?></a>)</td>
-                <td><?php echo $_info['uptime_in_days'] ?></td>
+                <td><?php echo $this->__(
+                    '%s days, %s hours, %s minutes, %s seconds',
+                    floor($_info['uptime_in_seconds'] / 86400),
+                    floor($_info['uptime_in_seconds'] / 3600),
+                    floor($_info['uptime_in_seconds'] / 60) % 60,
+                    floor($_info['uptime_in_seconds'] % 60)
+                ) ?></td>
                 <td><?php echo $_info['connected_clients'] ?></td>
                 <td><?php echo $_info['used_memory_human'] ?> / <?php echo $_info['used_memory_peak_human'] ?></td>
                 <td><?php echo $_info['role'] ?></td>
