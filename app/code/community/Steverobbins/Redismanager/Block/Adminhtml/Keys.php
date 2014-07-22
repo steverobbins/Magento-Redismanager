@@ -65,8 +65,9 @@ class Steverobbins_Redismanager_Block_Adminhtml_Keys
             $services = $this->_getHelper()->getServices();
             if (isset($services[$id])) {
                 $this->_service = $services[$id];
+            } else {
+                $this->_service = false;
             }
-            $this->_service = false;
         }
         return $this->_service;
     }
