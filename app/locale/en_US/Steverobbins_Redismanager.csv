@@ -9,7 +9,7 @@ Database,Database
 "Flush Databases","Flush Databases"
 Host,Host
 "If No, use manual configuration below","If No, use manual configuration below"
-"Key Count","Key Count"
+Keys,Keys
 "Keys for %s","Keys for %s"
 "Last Save","Last Save"
 "Manual Configuration","Manual Configuration"
@@ -23,11 +23,11 @@ Port,Port
 Role,Role
 Session,Session
 Settings,Settings
-"Slaves Count","Slaves Count"
+Slaves,Slaves
 Statistics,Statistics
 System,System
 "Total: %s","Total: %s"
 "Unable to flush Redis database","Unable to flush Redis database"
-"Updtime (days)","Updtime (days)"
+Uptime,Uptime
 "View Keys","View Keys"
 view,view
