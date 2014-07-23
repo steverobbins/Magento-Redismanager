@@ -149,7 +149,7 @@ $_services = $this->helper('redismanager')->getServices();
                 <td><?php echo $this->__(
                     '%s days, %s hours, %s minutes, %s seconds',
                     floor($_uptime / 86400),
-                    floor($_uptime / 3600),
+                    floor($_uptime / 3600) % 24,
                     floor($_uptime / 60) % 60,
                     floor($_uptime % 60)
                 ) ?></td>

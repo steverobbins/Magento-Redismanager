@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Redis Management Module
+ * 
+ * @category   Steverobbins
+ * @package    Steverobbins_Redismanager
+ * @author     Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright  Copyright (c) 2014 Steve Robbins (https://github.com/steverobbins)
+ * @license    http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ */
+
+Enterprise Only
+-->
+<logging>
+    <redismanager translate="label">
+        <label>Redis Caches &amp; Sessions</label>
+        <actions>
+            <adminhtml_redismanager_index>
+                <action>index</action>
+            </adminhtml_redismanager_index>
+            <adminhtml_redismanager_keys>
+                <action>keys</action>
+            </adminhtml_redismanager_keys>
+            <adminhtml_redismanager_flushDb>
+                <action>flushDb</action>
+            </adminhtml_redismanager_flushDb>
+            <adminhtml_redismanager_mass>
+                <action>mass</action>
+            </adminhtml_redismanager_mass>
+            <adminhtml_redismanager_flushByKey>
+                <action>flushByKey</action>
+            </adminhtml_redismanager_flushByKey>
+        </actions>
+    </redismanager>
+</logging>
