@@ -13,7 +13,7 @@
 <config>
     <sections>
         <redismanager translate="label" module="redismanager">
-            <label>Redis Caches &amp; Sessions</label>
+            <label>Redis Management</label>
             <tab>advanced</tab>
             <frontend_type>text</frontend_type>
             <sort_order>920</sort_order>

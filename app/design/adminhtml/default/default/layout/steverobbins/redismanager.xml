@@ -13,7 +13,7 @@
 <layout version="0.1.0">
     <adminhtml_redismanager_index>
         <reference name="head">
-            <action method="addCss"><stylesheet>steverobbins/redismanager/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>steverobbins/redismanager/redismanager.css</stylesheet></action>
         </reference>
         <reference name="content">
             <block type="redismanager/adminhtml_manager" name="redismanager.manager" template="steverobbins/redismanager/manager.phtml">
@@ -22,7 +22,7 @@
     </adminhtml_redismanager_index>
     <adminhtml_redismanager_keys>
         <reference name="head">
-            <action method="addCss"><stylesheet>steverobbins/redismanager/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>steverobbins/redismanager/redismanager.css</stylesheet></action>
         </reference>
         <reference name="content">
             <block type="redismanager/adminhtml_keys" name="redismanager.keys" template="steverobbins/redismanager/keys.phtml">

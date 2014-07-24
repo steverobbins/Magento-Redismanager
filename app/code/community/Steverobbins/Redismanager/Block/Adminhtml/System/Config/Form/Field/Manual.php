@@ -18,24 +18,24 @@ class Steverobbins_Redismanager_Block_Adminhtml_System_Config_Form_Field_Manual
     public function __construct()
     {
         $this->addColumn('name', array(
-            'label'    => Mage::helper('adminhtml')->__('Name'),
-            'style'    => 'width:120px'
+            'label' => Mage::helper('adminhtml')->__('Name'),
+            'style' => 'width:auto'
         ));
         $this->addColumn('host', array(
-            'label'    => Mage::helper('adminhtml')->__('Host'),
-            'style'    => 'width:120px'
+            'label' => Mage::helper('adminhtml')->__('Host'),
+            'style' => 'width:auto'
         ));
         $this->addColumn('port', array(
-            'label'    => Mage::helper('adminhtml')->__('Port'),
-            'style'    => 'width:120px'
+            'label' => Mage::helper('adminhtml')->__('Port'),
+            'style' => 'width:auto'
         ));
         $this->addColumn('password', array(
-            'label'    => Mage::helper('adminhtml')->__('Password'),
-            'style'    => 'width:120px'
+            'label' => Mage::helper('adminhtml')->__('Password'),
+            'style' => 'width:auto'
         ));
         $this->addColumn('db', array(
-            'label'    => Mage::helper('adminhtml')->__('Database'),
-            'style'    => 'width:120px'
+            'label' => Mage::helper('adminhtml')->__('Database'),
+            'style' => 'width:auto'
         ));
         $this->_addAfter = false;
         $this->_addButtonLabel = Mage::helper('adminhtml')->__('Add');

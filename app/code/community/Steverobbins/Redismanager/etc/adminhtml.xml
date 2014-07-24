@@ -15,7 +15,7 @@
         <system>
             <children>
                 <redismanager translate="title">
-                    <title>Redis Caches &amp; Sessions</title>
+                    <title>Redis Management</title>
                     <sort_order>95</sort_order>
                     <action>adminhtml/redismanager</action>
                 </redismanager>
@@ -29,12 +29,12 @@
                     <system>
                         <children>
                             <redismanager translate="title" module="redismanager">
-                                <title>Redis Caches &amp; Sessions</title>
+                                <title>Redis Management</title>
                             </redismanager>
                             <config>
                                 <children>
                                     <redismanager translate="title" module="redismanager">
-                                        <title>Redis Caches &amp; Sessions</title>
+                                        <title>Redis Management</title>
                                     </redismanager>
                                 </children>
                             </config>

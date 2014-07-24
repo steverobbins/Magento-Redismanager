@@ -25,7 +25,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
     public function indexAction()
     {
         $this->_title($this->__('System'))
-             ->_title($this->__('Redis Manager'));
+             ->_title($this->__('Redis Management'));
         $this->loadLayout();
         $this->_setActiveMenu('system/redismanager');
         $this->renderLayout();

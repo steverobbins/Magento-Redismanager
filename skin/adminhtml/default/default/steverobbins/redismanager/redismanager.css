@@ -53,3 +53,14 @@
     min-width: 300px;
     min-height: 150px
 }
+.redisKeySamples + * {
+    clear: both;
+}
+.redisKeySamples > * {
+    font-size: 10px;
+    float: left;
+}
+.redisKeySamples li {
+    float: left;
+    margin-left: 10px;
+}
