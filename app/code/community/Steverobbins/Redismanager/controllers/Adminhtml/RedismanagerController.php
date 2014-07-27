@@ -124,10 +124,14 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      */
     public function flushAllAction()
     {
-        $flushed = array();
+        $flushThis = $this->getRequest()->getParam('host', null);
+        $flushed   = array();
         foreach ($this->_getHelper()->getServices() as $service) {
             $serviceMatch = $service['host'] . ':' . $service['port'];
-            if (in_array($serviceMatch, $flushed)) {
+            if (
+                in_array($serviceMatch, $flushed)
+                || (!is_null($flushThis) && $flushThis != $serviceMatch)
+            ) {
                 continue;
             }
             try {

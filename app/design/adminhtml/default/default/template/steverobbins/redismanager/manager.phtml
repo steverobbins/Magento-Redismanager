@@ -11,7 +11,7 @@
 /**
  * @var Steverobbins_Redismanager_Block_Adminhtml_Manager $this
  */
-$_services = $this->helper('redismanager')->getServices();
+$_services = $this->getSortedServices();
 ?>
 <div class="redismanager manager">
     <button id="flushAll" title="<?php echo $this->__('Flush All') ?>" type="button" class="scalable delete right" onclick="setLocation('<?php echo $this->getUrl('*/*/flushAll') ?> ')"><span><span><span><?php echo $this->__('Flush All') ?></span></span></span></button>
@@ -48,10 +48,7 @@ $_services = $this->helper('redismanager')->getServices();
             </tbody>
         </table>
         <table class="services">
-            <col width="20" />
-            <col />
-            <col />
-            <col />
+            <col width="15" />
             <col />
             <col />
             <col />
@@ -63,11 +60,8 @@ $_services = $this->helper('redismanager')->getServices();
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th><?php echo $this->__('Name') ?></th>
                     <th><?php echo $this->__('Host') ?></th>
                     <th><?php echo $this->__('Port') ?></th>
-                    <th><?php echo $this->__('Database') ?></th>
-                    <th><?php echo $this->__('Keys') ?></th>
                     <th><?php echo $this->__('Uptime') ?></th>
                     <th><?php echo $this->__('Connections') ?></th>
                     <th><?php echo $this->__('Memory / Peak') ?></th>
@@ -78,45 +72,35 @@ $_services = $this->helper('redismanager')->getServices();
             </thead>
             <tbody>
                 <?php if (count($_services)): ?>
-                <?php $_coreHelper = $this->helper('core') ?>
-                <?php $_date = Mage::getSingleton('core/date') ?>
-                <?php
-                    foreach ($_services as $_id => $_service):
-                        $_client = $this->helper('redismanager')
-                            ->getRedisInstance(
-                                $_service['host'],
-                                $_service['port'],
-                                $_service['password'],
-                                $_service['db']
-                            );
-                        $_info = $_client->getRedis()->info();
-                        $_uptime = $_info['uptime_in_seconds'];
-                ?>
+                <?php foreach ($_services as $_host => $_service): ?>
                 <tr onclick="redisCheckRow(this)">
-                    <td onclick="return false"><input type="checkbox" name="service[]" value="<?php echo $_id ?>" /></td>
-                    <td><?php echo $_service['name'] ?></td>
+                    <td></td>
                     <td><?php echo $_service['host'] ?></td>
                     <td><?php echo $_service['port'] ?></td>
-                    <td><?php echo $_service['db'] ?></td>
-                    <td><?php echo count($_client->getRedis()->keys('*')) ?> (<a href="<?php echo $this->getUrl('*/*/keys', array(
+                    <td><?php echo $_service['uptime'] ?></td>
+                    <td><?php echo $_service['connections'] ?></td>
+                    <td><?php echo $_service['memory'] ?></td>
+                    <td><?php echo $_service['role'] ?></td>
+                    <td><?php echo $_service['lastsave'] ?></td>
+                    <td onclick="return false"><button class="delete" onclick="window.location = '<?php
+                        echo $this->getUrl('*/*/flushAll', array(
+                            '_query' => array(
+                                'host' => $_host
+                            )
+                        ))
+                    ?>'; return false;"><?php echo $this->__("Flush All") ?></button></td>
+                </tr>
+                <?php foreach ($_service['services'] as $_id => $_db): ?>
+                <tr onclick="redisCheckRow(this)">
+                    <td><input type="checkbox" name="service[]" value="<?php echo $_id ?>" /></td>
+                    <td colspan="7">
+                        <strong><?php echo $this->__('Name') ?>:</strong> <?php echo $_db['name'] ?><br />
+                        <strong><?php echo $this->__('Database') ?>:</strong> <?php echo $_db['db'] ?><br />
+                        <strong><?php echo $this->__('Keys') ?>:</strong> <?php echo $_db['keys'] ?> (<a href="<?php echo $this->getUrl('*/*/keys', array(
                         '_query' => array(
                             'id' => $_id
-                        ))) ?>"><?php echo $this->__('view') ?></a>)</td>
-                    <td><?php echo $this->__(
-                        '%s days, %s hours, %s minutes, %s seconds',
-                        floor($_uptime / 86400),
-                        floor($_uptime / 3600) % 24,
-                        floor($_uptime / 60) % 60,
-                        floor($_uptime % 60)
-                    ) ?></td>
-                    <td><?php echo $_info['connected_clients'] ?></td>
-                    <td><?php echo $_info['used_memory_human'] ?> / <?php echo $_info['used_memory_peak_human'] ?></td>
-                    <td><?php echo $_info['role'] . ((int)$_info['connected_slaves'] > 0 ? ' (' . $_info['connected_slaves'] . ' slaves)' : '') ?></td>
-                    <td><?php
-                        if (isset($_info['rdb_last_save_time'])) {
-                            echo $_coreHelper->formatTime($_date->timestamp($_info['rdb_last_save_time']), Mage_Core_Model_Locale::FORMAT_TYPE_LONG);
-                        }
-                    ?></td>
+                        ))) ?>"><?php echo $this->__('view') ?></a>)
+                    </td>
                     <td onclick="return false"><button onclick="window.location = '<?php
                         echo $this->getUrl('*/*/flushDb', array(
                             '_query' => array(
@@ -125,7 +109,8 @@ $_services = $this->helper('redismanager')->getServices();
                         ))
                     ?>'; return false;"><?php echo $this->__("Flush DB") ?></button></td>
                 </tr>
-                <?php endforeach ?>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
                 <?php else: ?>
                 <tr>
                     <td class="empty-text a-center" colspan="100"><?php echo $this->__('No Redis services were found.') ?></td>
@@ -151,7 +136,7 @@ $_services = $this->helper('redismanager')->getServices();
                 <ul>
                     <li><a id="redisKeySampleCategory" href="#" data-keys="CATEGORY"><?php echo $this->__('Categories') ?></a></li>
                     <li><a id="redisKeySampleProduct" href="#" data-keys="PRODUCT"><?php echo $this->__('Products') ?></a></li>
-                    <li><a id="redisKeySampleProduct" href="#" data-keys="BLOCK,CMS,LAYOUT,THEME"><?php echo $this->__('Frontend') ?></a></li>
+                    <li><a id="redisKeySampleProduct" href="#" data-keys="BLOCK,CMS,LAYOUT,THEME"><?php echo $this->__('Design & Layout') ?></a></li>
                     <li><a id="redisKeySampleProduct" href="#" data-keys="LOCALE,Locale,TRANSLATE"><?php echo $this->__('Locale') ?></a></li>
                 </ul>
                 <p style="clear:both"><em><?php echo $this->__('Keys can also be deleted by using <a href="%s">Cache Management</a>.', $this->getUrl('*/cache')) ?></em></p>
