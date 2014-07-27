@@ -56,6 +56,9 @@ $_services = $this->getSortedServices();
             <col />
             <col />
             <col />
+            <col />
+            <col />
+            <col />
             <col width="80" />
             <thead>
                 <tr>
@@ -67,6 +70,7 @@ $_services = $this->getSortedServices();
                     <th><?php echo $this->__('Memory / Peak') ?></th>
                     <th><?php echo $this->__('Role') ?></th>
                     <th><?php echo $this->__('Last Save') ?></th>
+                    <th colspan="3"><?php echo $this->__('Details') ?></th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -82,6 +86,7 @@ $_services = $this->getSortedServices();
                     <td><?php echo $_service['memory'] ?></td>
                     <td><?php echo $_service['role'] ?></td>
                     <td><?php echo $_service['lastsave'] ?></td>
+                    <td colspan="3">&nbsp;</td>
                     <td onclick="return false"><button class="delete" onclick="window.location = '<?php
                         echo $this->getUrl('*/*/flushAll', array(
                             '_query' => array(
@@ -93,9 +98,14 @@ $_services = $this->getSortedServices();
                 <?php foreach ($_service['services'] as $_id => $_db): ?>
                 <tr onclick="redisCheckRow(this)">
                     <td><input type="checkbox" name="service[]" value="<?php echo $_id ?>" /></td>
-                    <td colspan="7">
-                        <strong><?php echo $this->__('Name') ?>:</strong> <?php echo $_db['name'] ?><br />
-                        <strong><?php echo $this->__('Database') ?>:</strong> <?php echo $_db['db'] ?><br />
+                    <td colspan="7">&nbsp;</td>
+                    <td>
+                        <strong><?php echo $this->__('Name') ?>:</strong> <?php echo $_db['name'] ?>
+                    </td>
+                    <td>
+                        <strong><?php echo $this->__('Database') ?>:</strong> <?php echo $_db['db'] ?>
+                    </td>
+                    <td>
                         <strong><?php echo $this->__('Keys') ?>:</strong> <?php echo $_db['keys'] ?> (<a href="<?php echo $this->getUrl('*/*/keys', array(
                         '_query' => array(
                             'id' => $_id
