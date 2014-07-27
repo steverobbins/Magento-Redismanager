@@ -111,7 +111,11 @@ $_services = $this->helper('redismanager')->getServices();
                     <td><?php echo $_info['connected_clients'] ?></td>
                     <td><?php echo $_info['used_memory_human'] ?> / <?php echo $_info['used_memory_peak_human'] ?></td>
                     <td><?php echo $_info['role'] . ((int)$_info['connected_slaves'] > 0 ? ' (' . $_info['connected_slaves'] . ' slaves)' : '') ?></td>
-                    <td><?php echo $_coreHelper->formatTime($_date->timestamp($_info['rdb_last_save_time']), Mage_Core_Model_Locale::FORMAT_TYPE_LONG) ?></td>
+                    <td><?php
+                        if (isset($_info['rdb_last_save_time'])) {
+                            echo $_coreHelper->formatTime($_date->timestamp($_info['rdb_last_save_time']), Mage_Core_Model_Locale::FORMAT_TYPE_LONG);
+                        }
+                    ?></td>
                     <td onclick="return false"><button onclick="window.location = '<?php
                         echo $this->getUrl('*/*/flushDb', array(
                             '_query' => array(
