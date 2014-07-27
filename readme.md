@@ -16,7 +16,7 @@ Magento's missing utility for managing Redis services
 
 # Screenshots
 
-![Manage Services](http://i.imgur.com/wsxzRWR.png)
+![Manage Services](http://i.imgur.com/TqNpXlX.png)
 
 ![View Keys](http://i.imgur.com/VGjLgGE.png)
 

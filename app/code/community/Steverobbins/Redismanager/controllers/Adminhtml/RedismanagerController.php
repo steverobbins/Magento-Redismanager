@@ -118,6 +118,35 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
     }
 
     /**
+     * Flushes all services
+     *
+     * @return void
+     */
+    public function flushAllAction()
+    {
+        $flushed = array();
+        foreach ($this->_getHelper()->getServices() as $service) {
+            $serviceMatch = $service['host'] . ':' . $service['port'];
+            if (in_array($serviceMatch, $flushed)) {
+                continue;
+            }
+            try {
+                $this->_getHelper()->getRedisInstance(
+                    $service['host'],
+                    $service['port'],
+                    $service['password'],
+                    $service['db']
+                )->getRedis()->flushAll();
+                $flushed[] = $serviceMatch;
+                Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceMatch)); 
+            } catch (Exception $e) {
+                Mage::getSingleton('core/session')->addError($e->getMessage()); 
+            }
+        }
+        $this->_redirect('*/*');
+    }
+
+    /**
      * Prepare keys for search
      *
      * @param  string

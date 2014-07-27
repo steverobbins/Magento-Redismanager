@@ -14,6 +14,7 @@
 $_services = $this->helper('redismanager')->getServices();
 ?>
 <div class="redismanager manager">
+    <button id="flushAll" title="<?php echo $this->__('Flush All') ?>" type="button" class="scalable delete right" onclick="setLocation('<?php echo $this->getUrl('*/*/flushAll') ?> ')"><span><span><span><?php echo $this->__('Flush All') ?></span></span></span></button>
     <div class="content-header">
         <h3><?php echo $this->__('Databases') ?></h3>
     </div>
