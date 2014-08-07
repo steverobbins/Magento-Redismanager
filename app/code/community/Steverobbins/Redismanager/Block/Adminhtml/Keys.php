@@ -66,7 +66,7 @@ class Steverobbins_Redismanager_Block_Adminhtml_Keys
             if (isset($services[$id])) {
                 $this->_service = $services[$id];
             } else {
-                $this->_service = false;
+                $this->_service = array();
             }
         }
         return $this->_service;

@@ -1,3 +1,5 @@
+![Code Quality](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/badges/quality-score.png?b=master) ![Build Status](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/badges/build.png?b=master)
+
 Magento Redis Manager
 ==============================
 

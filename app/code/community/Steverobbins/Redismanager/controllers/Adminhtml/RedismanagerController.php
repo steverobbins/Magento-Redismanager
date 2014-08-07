@@ -16,6 +16,13 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      * @var Steverobbins_Redismanager_Helper_Data
      */
     protected $_helper;
+
+    protected function _construct()
+    {
+        parent::_construct();
+        $this->_title($this->__('System'))
+             ->_title($this->__('Redis Management'));
+    }
     
     /**
      * Manager page
@@ -24,8 +31,6 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      */
     public function indexAction()
     {
-        $this->_title($this->__('System'))
-             ->_title($this->__('Redis Management'));
         $this->loadLayout();
         $this->_setActiveMenu('system/redismanager');
         $this->renderLayout();
@@ -38,9 +43,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      */
     public function keysAction()
     {
-        $this->_title($this->__('System'))
-             ->_title($this->__('Redis Manager'))
-             ->_title($this->__('View Keys'));
+        $this->_title($this->__('View Keys'));
         $this->loadLayout();
         $this->_setActiveMenu('system/redismanager');
         $this->renderLayout();
