@@ -1,4 +1,4 @@
-![Code Quality](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/badges/quality-score.png?b=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/?branch=master)
 
 Magento Redis Manager
 ==============================
