@@ -13,7 +13,7 @@
 <config>
     <modules>
         <Steverobbins_Redismanager>
-            <version>1.2.1</version>
+            <version>1.2.1.1</version>
         </Steverobbins_Redismanager>
     </modules>
     <global>
