@@ -30,7 +30,7 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
      * Config getter
      * 
      * @param  string $path
-     * @return mixed
+     * @return string
      */
     public function getConfig($path)
     {
