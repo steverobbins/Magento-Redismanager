@@ -1,0 +1,15 @@
+{
+    "name": "steverobbins/redismanager",
+    "type": "magento-module",
+    "license":"CC-BY-3.0",
+    "description":"View and flush Redis services",
+    "authors":[
+        {
+            "name":"Steve Robbins",
+            "email":"steven.j.robbins@gmail.com"
+        }
+    ],
+    "replace": {
+        "Steverobbins/Redismanager":"*"
+    }
+}
