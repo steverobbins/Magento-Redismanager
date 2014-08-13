@@ -26,8 +26,9 @@ Magento's missing utility for managing Redis services
 
 # Installation
 
-1. Copy the contents of app/ and skin/ to your Magento installation
+1. Copy the contents of src/ to your Magento installation
 2. Clear Magento caches
+3. Log out of admin
 
 ## Installation with Modman
 
