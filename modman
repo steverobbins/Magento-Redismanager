@@ -1,6 +1,6 @@
-app/etc/modules/Steverobbins_Redismanager.xml                             app/etc/modules/Steverobbins_Redismanager.xml
-app/code/community/Steverobbins/Redismanager                              app/code/community/Steverobbins/Redismanager
-app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml
-app/design/adminhtml/default/default/template/steverobbins/redismanager   app/design/adminhtml/default/default/template/steverobbins/redismanager
-app/locale/en_US/Steverobbins_Redismanager.csv                            app/locale/en_US/Steverobbins_Redismanager.csv
-skin/adminhtml/default/default/steverobbins/redismanager                  skin/adminhtml/default/default/steverobbins/redismanager
+src/app/etc/modules/Steverobbins_Redismanager.xml                             app/etc/modules/Steverobbins_Redismanager.xml
+src/app/code/community/Steverobbins/Redismanager                              app/code/community/Steverobbins/Redismanager
+src/app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml
+src/app/design/adminhtml/default/default/template/steverobbins/redismanager   app/design/adminhtml/default/default/template/steverobbins/redismanager
+src/app/locale/en_US/Steverobbins_Redismanager.csv                            app/locale/en_US/Steverobbins_Redismanager.csv
+src/skin/adminhtml/default/default/steverobbins/redismanager                  skin/adminhtml/default/default/steverobbins/redismanager

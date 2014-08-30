@@ -36,8 +36,6 @@ Magento's missing utility for managing Redis services
     modman init
     modman clone https://github.com/steverobbins/Magento-Redismanager.git
 
-Clear Magento caches
-
 # License
 
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
