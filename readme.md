@@ -47,7 +47,7 @@ Magento's missing utility for managing Redis services
 * Can I configure new Redis services with the module?
   * Negative.  This module is only used to monitor and flush already configured services.  To add/change your services you need to modify app/etc/local.xml, enterprise.xml, fpc.xml ,etc.
 * I keep seeing a `Connection to Redis failed` error.  What does this mean?
-  * You may have incorrectly configured your settings.  Check you settings in System > Config > Advanced > Redis Management.  Double check you Manual Configuration or try changing `Automatically detect Redis services` to `Yes`
+  * You may have incorrectly configured your settings.  Check you settings in System > Config > Advanced > Redis Management.  Double check your Manual Configuration or try changing `Automatically detect Redis services` to `Yes`
 * What versions of Magento are supported?
   * This module has been tested on CE 1.7, 1.8, 1.9 and EE 1.12, 1.13, 1.14, however it should work with any version.
 
