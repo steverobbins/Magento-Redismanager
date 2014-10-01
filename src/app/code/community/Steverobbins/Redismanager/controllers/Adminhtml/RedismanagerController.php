@@ -106,7 +106,9 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
                 )->getRedis();
                 $matched = array();
                 foreach ($keys as $key) {
-                    $matched = array_merge($matched, $redis->keys($key));
+                    if ($key !== false) {
+                        $matched = array_merge($matched, $redis->keys($key));
+                    }
                 }
                 if (count($matched)) {
                     $clearCount += $redis->del($matched);
@@ -161,7 +163,11 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      */
     protected function _prepareKey($key)
     {
-        return '*' . trim($key) . '*';
+        $key = trim($key);
+        if (empty($key)) {
+            return false;
+        }
+        return '*' . $key . '*';
     }
 
     /**
