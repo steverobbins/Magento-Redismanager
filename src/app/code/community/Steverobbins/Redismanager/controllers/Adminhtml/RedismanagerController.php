@@ -159,7 +159,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      * Prepare keys for search
      *
      * @param  string
-     * @return string
+     * @return boolean|string
      */
     protected function _prepareKey($key)
     {

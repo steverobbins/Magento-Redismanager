@@ -138,6 +138,6 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
                 'database' => $db
             ));
         }
-        return false;
+        Mage::throwException('Unable to determine Redis backend class.');
     }
 }
