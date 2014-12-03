@@ -3,7 +3,7 @@
 Magento Redis Manager
 ==============================
 
-Magento's missing utility for managing Redis services
+Utility for managing Redis services
 
 # Features
 
