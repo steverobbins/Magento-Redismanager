@@ -13,9 +13,11 @@
     border: 1px solid #d6d6d6;
     background: #fafafa;
 }
+
 .redismanager table.services thead tr {
     background: url(../../images/sort_row_bg.gif) 0 50% repeat-x;
 }
+
 .redismanager table.services th {
     border-width: 1px; 
     border-color: #f9f9f9 #d1cfcf #f9f9f9 #d1cfcf;
@@ -24,43 +26,56 @@
     font-size: .9em;
     padding: 2px 4px;
 }
+
 .redismanager table.services th + th {
     border-color: #f9f9f9 #d1cfcf #f9f9f9 #f9f9f9;
 }
+
 .redismanager table.services tbody tr:hover {
     background: #fcf5dd;
     cursor: pointer;
 }
+
 .redismanager table.services tr:nth-child(even) {
     background: #f6f6f6;
 }
+
 .redismanager table.services td {
     border-width: 0 1px 1px 0;
     border-color: #dadfe0;
     border-style: solid;
     padding: 2px 4px;
 }
+
 .redismanager table.services td.empty-text {
     padding: 15px;
 }
+
 .redismanager .entry-edit-head .actions {
     float: right;
 }
+
 .redismanager * + .content-header {
     margin-top: 15px;
 }
+
 #redisKeys {
     min-width: 300px;
     min-height: 150px
 }
+
 .redisKeySamples + * {
     clear: both;
 }
+
 .redisKeySamples > * {
     font-size: 10px;
     float: left;
 }
+
 .redisKeySamples li {
     float: left;
     margin-left: 10px;
 }
+
+\

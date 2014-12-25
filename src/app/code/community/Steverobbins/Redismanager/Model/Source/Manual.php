@@ -14,6 +14,7 @@ class Steverobbins_Redismanager_Model_Source_Manual
 {
     /**
      * Event prefix for observers
+     * 
      * @var string
      */
     protected $_eventPrefix = 'redismanager_manual';

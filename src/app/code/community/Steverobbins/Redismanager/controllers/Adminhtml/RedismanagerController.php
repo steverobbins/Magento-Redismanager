@@ -17,6 +17,11 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
      */
     protected $_helper;
 
+    /**
+     * Set title
+     * 
+     * @return void
+     */
     protected function _construct()
     {
         parent::_construct();

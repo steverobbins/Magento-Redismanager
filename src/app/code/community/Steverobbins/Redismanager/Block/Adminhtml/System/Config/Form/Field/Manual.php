@@ -14,6 +14,8 @@ class Steverobbins_Redismanager_Block_Adminhtml_System_Config_Form_Field_Manual
 {
     /**
      * Add columns
+     *
+     * @return void
      */
     public function __construct()
     {
