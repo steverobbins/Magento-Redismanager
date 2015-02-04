@@ -14,6 +14,7 @@
     <adminhtml_redismanager_index>
         <reference name="head">
             <action method="addCss"><stylesheet>steverobbins/redismanager/redismanager.css</stylesheet></action>
+            <action method="addJs"><script>steverobbins/redismanager/chart.min.js</script></action>
         </reference>
         <reference name="content">
             <block type="redismanager/adminhtml_manager" name="redismanager.manager" template="steverobbins/redismanager/manager.phtml">

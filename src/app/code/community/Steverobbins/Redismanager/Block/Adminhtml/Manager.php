@@ -33,12 +33,20 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
                     $service['db']
                 );
                 $info = $client->getRedis()->info();
-                $uptime = $info['uptime_in_seconds'];
                 $sorted[$hostPort] = array(
                     'host' => $service['host'],
                     'port' => $service['port'],
-                    'uptime' => $this->__(
-                        '%s days, %s hours, %s minutes, %s seconds',
+                    'info' => $info,                    
+                    'services' => array(
+                        $id => array(
+                            'name' => $service['name'],
+                            'db'   => $service['db'],
+                            'keys' => count($client->getRedis()->keys('*'))
+                        )
+                    )
+                );
+                /*$this->__(
+                        '%s day(s) %02d:%02d:%02d',
                         floor($uptime / 86400),
                         floor($uptime / 3600) % 24,
                         floor($uptime / 60) % 60,
@@ -64,7 +72,7 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
                             'keys' => count($client->getRedis()->keys('*'))
                         )
                     )
-                );
+                );*/
                 continue;
             }
             $client = $helper->getRedisInstance(
@@ -75,7 +83,7 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
             );
             $sorted[$hostPort]['services'][$id] = array(
                 'name' => $service['name'],
-                'db' => $service['db'],
+                'db'   => $service['db'],
                 'keys' => count($client->getRedis()->keys('*'))
             );
         }
