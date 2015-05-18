@@ -1,14 +1,27 @@
 <?php
 /**
  * Redis Management Module
- * 
- * @category   Steverobbins
- * @package    Steverobbins_Redismanager
- * @author     Steve Robbins <steven.j.robbins@gmail.com>
- * @copyright  Copyright (c) 2014 Steve Robbins (https://github.com/steverobbins)
- * @license    http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ *
+ * PHP Version 5
+ *
+ * @category  Steverobbins
+ * @package   Steverobbins_Redismanager
+ * @author    Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright 2014 Steve Robbins
+ * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ * @link      https://github.com/steverobbins/Magento-Redismanager
  */
 
+/**
+ * Redis manager helper class
+ *
+ * @category  Steverobbins
+ * @package   Steverobbins_Redismanager
+ * @author    Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright 2014 Steve Robbins
+ * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ * @link      https://github.com/steverobbins/Magento-Redismanager
+ */
 class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const XML_PATH_DEFAULT_SECTION = 'redismanager';
@@ -17,16 +30,15 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
 
     /**
      * Services cache
-     * 
+     *
      * @var array
      */
     protected $_services;
 
     /**
      * Config getter
-     * 
+     *
      * @param  string $path
-     * 
      * @return string
      */
     public function getConfig($path)
@@ -77,8 +89,7 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
                         $node[0]->db
                     );
                 }
-            }
-            else {
+            } else {
                 $this->_services = unserialize($this->getConfig('manual'));
             }
         }
@@ -87,13 +98,13 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
 
     /**
      * Assign values with casting
-     * 
+     *
      * @param  string $name
      * @param  string $host
      * @param  string $port
      * @param  string $pass
      * @param  string $db
-     * 
+     *
      * @return array
      */
     protected function _buildServiceArray($name, $host, $port, $pass, $db)
@@ -109,12 +120,12 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
     
     /**
      * Get Redis client
-     * 
+     *
      * @param  string $host
      * @param  string $port
      * @param  string $pass
      * @param  string $db
-     * 
+     *
      * @return Steverobbins_Redismanager_Model_Backend_Redis_Cm|Steverobbins_Redismanager_Model_Backend_Redis_Mage
      */
     public function getRedisInstance($host, $port, $pass, $db)
@@ -126,7 +137,7 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
                 'password' => $pass,
                 'database' => $db
             ));
-        } else if (class_exists('Cm_Cache_Backend_Redis')) {
+        } elseif (class_exists('Cm_Cache_Backend_Redis')) {
             return Mage::getModel('redismanager/backend_redis_cm', array(
                 'server'   => $host,
                 'port'     => $port,

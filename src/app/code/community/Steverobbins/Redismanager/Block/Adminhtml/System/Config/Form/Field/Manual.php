@@ -1,14 +1,27 @@
 <?php
 /**
  * Redis Management Module
- * 
- * @category   Steverobbins
- * @package    Steverobbins_Redismanager
- * @author     Steve Robbins <steven.j.robbins@gmail.com>
- * @copyright  Copyright (c) 2014 Steve Robbins (https://github.com/steverobbins)
- * @license    http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ *
+ * PHP Version 5
+ *
+ * @category  Steverobbins
+ * @package   Steverobbins_Redismanager
+ * @author    Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright 2014 Steve Robbins
+ * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ * @link      https://github.com/steverobbins/Magento-Redismanager
  */
 
+/**
+ * Renderer for manual system config
+ *
+ * @category  Steverobbins
+ * @package   Steverobbins_Redismanager
+ * @author    Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright 2014 Steve Robbins
+ * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ * @link      https://github.com/steverobbins/Magento-Redismanager
+ */
 class Steverobbins_Redismanager_Block_Adminhtml_System_Config_Form_Field_Manual
     extends Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract
 {

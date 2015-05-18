@@ -9,7 +9,7 @@
             "email":"steven.j.robbins@gmail.com"
         }
     ],
-    "replace": {
-        "Steverobbins/Redismanager":"*"
+    "require-dev":  {
+        "squizlabs/php_codesniffer": "2.*"
     }
 }
