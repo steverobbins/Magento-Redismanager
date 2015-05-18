@@ -20,13 +20,4 @@
             </block>
         </reference>
     </adminhtml_redismanager_index>
-    <adminhtml_redismanager_keys>
-        <reference name="head">
-            <action method="addCss"><stylesheet>steverobbins/redismanager/redismanager.css</stylesheet></action>
-        </reference>
-        <reference name="content">
-            <block type="redismanager/adminhtml_keys" name="redismanager.keys" template="steverobbins/redismanager/keys.phtml">
-            </block>
-        </reference>
-    </adminhtml_redismanager_keys>
 </layout>

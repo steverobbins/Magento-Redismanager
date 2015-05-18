@@ -106,10 +106,7 @@ $_services = $this->getSortedServices();
                         <strong><?php echo $this->__('Database') ?>:</strong> <?php echo $_db['db'] ?>
                     </td>
                     <td>
-                        <strong><?php echo $this->__('Keys') ?>:</strong> <?php echo $_db['keys'] ?> (<a href="<?php echo $this->getUrl('*/*/keys', array(
-                        '_query' => array(
-                            'id' => $_id
-                        ))) ?>"><?php echo $this->__('view') ?></a>)
+                        <strong><?php echo $this->__('Keys') ?>:</strong> <?php echo $_db['keys'] ?>
                     </td>
                     <td onclick="return false"><button onclick="window.location = '<?php
                         echo $this->getUrl('*/*/flushDb', array(

@@ -40,19 +40,6 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
         $this->_setActiveMenu('system/redismanager');
         $this->renderLayout();
     }
-    
-    /**
-     * View keys page
-     *
-     * @return void
-     */
-    public function keysAction()
-    {
-        $this->_title($this->__('View Keys'));
-        $this->loadLayout();
-        $this->_setActiveMenu('system/redismanager');
-        $this->renderLayout();
-    }
 
     /**
      * Flush a Redis DB
