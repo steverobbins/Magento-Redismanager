@@ -1,4 +1,6 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/?branch=master)
+[![Master Build Status](https://img.shields.io/travis/steverobbins/Magento-Redismanager/master.svg?style=flat-square)](https://travis-ci.org/steverobbins/Magento-Redismanager)
+[![Master Code Quality](https://img.shields.io/scrutinizer/g/steverobbins/Magento-Redismanager/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/steverobbins/Magento-Redismanager/?branch=master)
+[![Latest Stable Version](https://img.shields.io/packagist/v/steverobbins/redismanager.svg?style=flat-square)](https://packagist.org/packages/steverobbins/redismanager)
 
 Magento Redis Manager
 ==============================
