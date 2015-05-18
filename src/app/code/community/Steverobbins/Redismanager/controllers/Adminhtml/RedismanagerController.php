@@ -1,32 +1,47 @@
 <?php
 /**
  * Redis Management Module
- * 
- * @category   Steverobbins
- * @package    Steverobbins_Redismanager
- * @author     Steve Robbins <steven.j.robbins@gmail.com>
- * @copyright  Copyright (c) 2014 Steve Robbins (https://github.com/steverobbins)
- * @license    http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ *
+ * PHP Version 5
+ *
+ * @category  Steverobbins
+ * @package   Steverobbins_Redismanager
+ * @author    Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright 2014 Steve Robbins
+ * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ * @link      https://github.com/steverobbins/Magento-Redismanager
  */
 
+/**
+ * Handle view of configured redis services
+ *
+ * @category  Steverobbins
+ * @package   Steverobbins_Redismanager
+ * @author    Steve Robbins <steven.j.robbins@gmail.com>
+ * @copyright 2014 Steve Robbins
+ * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
+ * @link      https://github.com/steverobbins/Magento-Redismanager
+ */
 class Steverobbins_Redismanager_Adminhtml_RedismanagerController
     extends Mage_Adminhtml_Controller_Action
 {
     /**
+     * Cached helper
+     *
      * @var Steverobbins_Redismanager_Helper_Data
      */
     protected $_helper;
 
     /**
      * Set title
-     * 
+     *
      * @return void
      */
     protected function _construct()
     {
         parent::_construct();
         $this->_title($this->__('System'))
-             ->_title($this->__('Redis Management'));
+            ->_title($this->__('Redis Management'));
     }
     
     /**
@@ -51,7 +66,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
         $id       = $this->getRequest()->getParam('id');
         $services = $this->_getHelper()->getServices();
         if ($id === false || !isset($services[$id])) {
-            Mage::getSingleton('core/session')->addError($this->__('Unable to flush Redis database')); 
+            Mage::getSingleton('core/session')->addError($this->__('Unable to flush Redis database'));
         } else {
             $this->_flushDb($services[$id]);
         }
@@ -60,7 +75,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
 
     /**
      * Process multiple services
-     * 
+     *
      * @return void
      */
     public function massAction()
@@ -125,8 +140,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
         $flushed   = array();
         foreach ($this->_getHelper()->getServices() as $service) {
             $serviceMatch = $service['host'] . ':' . $service['port'];
-            if (
-                in_array($serviceMatch, $flushed)
+            if (in_array($serviceMatch, $flushed)
                 || (!is_null($flushThis) && $flushThis != $serviceMatch)
             ) {
                 continue;
@@ -139,9 +153,9 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
                     $service['db']
                 )->getRedis()->flushAll();
                 $flushed[] = $serviceMatch;
-                Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceMatch)); 
+                Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceMatch));
             } catch (Exception $e) {
-                Mage::getSingleton('core/session')->addError($e->getMessage()); 
+                Mage::getSingleton('core/session')->addError($e->getMessage());
             }
         }
         $this->_redirect('*/*');
@@ -150,7 +164,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
     /**
      * Prepare keys for search
      *
-     * @param  string
+     * @param  string $key
      * @return boolean|string
      */
     protected function _prepareKey($key)
@@ -175,7 +189,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
 
     /**
      * Flush a db
-     * 
+     *
      * @param  array $service
      * @return void
      */
@@ -189,9 +203,9 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
                 $service['db']
             );
             $redis->clean(Zend_Cache::CLEANING_MODE_ALL);
-            Mage::getSingleton('core/session')->addSuccess($this->__('%s database flushed', $service['name'])); 
+            Mage::getSingleton('core/session')->addSuccess($this->__('%s database flushed', $service['name']));
         } catch (Exception $e) {
-            Mage::getSingleton('core/session')->addError($e->getMessage()); 
+            Mage::getSingleton('core/session')->addError($e->getMessage());
         }
     }
 

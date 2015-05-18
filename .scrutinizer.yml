@@ -1,4 +1,5 @@
-tools:
-    php_sim: true
-    php_pdepend: true
-    php_analyzer: true
+checks:
+    php: true
+build_failure_conditions:
+    - 'elements.rating(<= D).new.exists'
+    - 'issues.new.exists'
