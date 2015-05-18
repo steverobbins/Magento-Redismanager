@@ -18,11 +18,7 @@ Utility for managing Redis services
 
 # Screenshots
 
-![Manage Services](http://i.imgur.com/TkeyEmY.png)
-
----
-
-![View Keys](http://i.imgur.com/VGjLgGE.png)
+![Manage Services](http://i.imgur.com/OQnxqiY.png)
 
 # Installation
 
