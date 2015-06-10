@@ -5,6 +5,8 @@
 Magento Redis Manager
 ==============================
 
+[![Join the chat at https://gitter.im/steverobbins/Magento-Redismanager](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/steverobbins/Magento-Redismanager?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Utility for managing Redis services
 
 # Features
