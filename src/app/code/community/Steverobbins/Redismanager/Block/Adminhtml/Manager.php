@@ -25,6 +25,15 @@
 class Steverobbins_Redismanager_Block_Adminhtml_Manager
     extends Mage_Adminhtml_Block_Template
 {
+    const DEFAULT_MISSING_STRING = 'N/A';
+
+    /**
+     * Cached array of info from a redis instance
+     *
+     * @var array
+     */
+    protected $_info;
+
     /**
      * Build multidimensional array of servers by host:port
      *
@@ -32,10 +41,8 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
      */
     public function getSortedServices()
     {
-        $helper     = $this->helper('redismanager');
-        $coreHelper = $this->helper('core');
-        $date       = Mage::getSingleton('core/date');
-        $sorted     = array();
+        $helper = $this->helper('redismanager');
+        $sorted = array();
         foreach ($helper->getServices() as $id => $service) {
             $hostPort = $service['host'] . ':' . $service['port'];
             if (!isset($sorted[$hostPort])) {
@@ -45,39 +52,7 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
                     $service['password'],
                     $service['db']
                 );
-                $info = $client->getRedis()->info();
-                $uptime = isset($info['uptime_in_seconds']) ? $info['uptime_in_seconds'] : false;
-                $sorted[$hostPort] = array(
-                    'host' => $service['host'],
-                    'port' => $service['port'],
-                    'uptime' => $uptime ? $this->__(
-                        '%s days, %s hours, %s minutes, %s seconds',
-                        floor($uptime / 86400),
-                        floor($uptime / 3600) % 24,
-                        floor($uptime / 60) % 60,
-                        floor($uptime % 60)
-                    ) : $this->__('N/A'),
-                    'connections' => isset($info['connected_clients']) ? $info['connected_clients'] : $this->__('N/A'),
-                    'memory' => (isset($info['used_memory_human']) && isset($info['used_memory_peak_human'])) ? $info['used_memory_human'] . ' / ' . $info['used_memory_peak_human'] : $this->__('N/A'),
-                    'role' => (isset($info['role']) ? $info['role'] : $this->__('N/A')) . (
-                        isset($info['connected_slaves']) && (int)$info['connected_slaves'] > 0
-                            ? ' (' . $info['connected_slaves'] . ' slaves)'
-                            : ''
-                        ),
-                    'lastsave' => isset($info['rdb_last_save_time'])
-                        ? $coreHelper->formatTime(
-                            $date->timestamp($info['rdb_last_save_time']),
-                            Mage_Core_Model_Locale::FORMAT_TYPE_LONG
-                        )
-                        : $this->__('N/A'),
-                    'services' => array(
-                        $id => array(
-                            'name' => $service['name'],
-                            'db' => $service['db'],
-                            'keys' => count($client->getRedis()->keys('*'))
-                        )
-                    )
-                );
+                $sorted[$hostPort] = $this->_getSortedService($service, $id, $client);
                 continue;
             }
             $client = $helper->getRedisInstance(
@@ -93,5 +68,117 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
             );
         }
         return $sorted;
+    }
+
+    /**
+     * Get a formatted array of data from the redis info
+     *
+     * @param  array              $service
+     * @param  integer            $id
+     * @param  Zend_Cache_Backend $client
+     *
+     * @return array
+     */
+    protected function _getSortedService(array $service, $id, Zend_Cache_Backend $client)
+    {
+        $this->_info = $client->getRedis()->info();
+        return array(
+            'host' => $service['host'],
+            'port' => $service['port'],
+            'uptime' => $this->_getUptime(),
+            'connections' => $this->_getInfo('connected_clients'),
+            'memory' => $this->_getMemory(),
+            'role' => $this->_getInfo('role') . $this->_getSlaves(),
+            'lastsave' => $this->_getLastSave(),
+            'services' => array(
+                $id => array(
+                    'name' => $service['name'],
+                    'db' => $service['db'],
+                    'keys' => count($client->getRedis()->keys('*'))
+                )
+            )
+        );
+    }
+
+    /**
+     * Get the uptime for this service
+     *
+     * @return string
+     */
+    protected function _getUptime()
+    {
+        $uptime = $this->_getInfo('uptime_in_seconds', false);
+        if (!$uptime) {
+            return $this->__(self::DEFAULT_MISSING_STRING);
+        }
+        return $this->__(
+            '%s days, %s hours, %s minutes, %s seconds',
+            floor($uptime / 86400),
+            floor($uptime / 3600) % 24,
+            floor($uptime / 60) % 60,
+            floor($uptime % 60)
+        );
+    }
+
+    /**
+     * Get the memory usage
+     *
+     * @return string
+     */
+    protected function _getMemory()
+    {
+        $used = $this->_getInfo('used_memory_human', false);
+        $peak = $this->_getInfo('used_memory_peak_human', false);
+        if (!$used || !$peak) {
+            return $this->__(self::DEFAULT_MISSING_STRING);
+        }
+        return $used . ' / ' . $peak;
+    }
+
+    /**
+     * Get any connected slaves
+     *
+     * @return string
+     */
+    protected function _getSlaves()
+    {
+        $slaves = $this->_getInfo('connected_slaves', false);
+        if (!$slaves) {
+            return '';
+        }
+        return $this->__(' (%s slaves)', $slaves);
+    }
+
+    /**
+     * Get the last save timestamp
+     *
+     * @return string
+     */
+    protected function _getLastSave()
+    {
+        $lastSave = $this->_getInfo('rdb_last_save_time', false);
+        if (!$lastSave) {
+            return $this->__(self::DEFAULT_MISSING_STRING);
+        }
+        return $this->helper('core')->formatTime(
+            Mage::getSingleton('core/date')->timestamp($lastSave),
+            Mage_Core_Model_Locale::FORMAT_TYPE_LONG
+        );
+    }
+
+    /**
+     * Get information from the redis client
+     *
+     * @param string $key
+     * @param mixed  $ifMissing
+     *
+     * @return mixed
+     */
+    protected function _getInfo($key, $ifMissing = self::DEFAULT_MISSING_STRING)
+    {
+        if (isset($this->_info[$key])) {
+            return $this->_info[$key];
+        }
+        return is_string($ifMissing) ? $this->__($ifMissing) : $ifMissing;
     }
 }
