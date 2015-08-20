@@ -46,24 +46,24 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
                     $service['db']
                 );
                 $info = $client->getRedis()->info();
-                $uptime = $info['uptime_in_seconds'];
+                $uptime = isset($info['uptime_in_seconds']) ? $info['uptime_in_seconds'] : false;
                 $sorted[$hostPort] = array(
                     'host' => $service['host'],
                     'port' => $service['port'],
-                    'uptime' => $this->__(
+                    'uptime' => $uptime ? $this->__(
                         '%s days, %s hours, %s minutes, %s seconds',
                         floor($uptime / 86400),
                         floor($uptime / 3600) % 24,
                         floor($uptime / 60) % 60,
                         floor($uptime % 60)
-                    ),
-                    'connections' => $info['connected_clients'],
-                    'memory' => $info['used_memory_human'] . ' / ' . $info['used_memory_peak_human'],
-                    'role' => $info['role'] . (
-                        (int)$info['connected_slaves'] > 0
-                        ? ' (' . $info['connected_slaves'] . ' slaves)'
-                        : ''
-                    ),
+                    ) : $this->__('N/A'),
+                    'connections' => isset($info['connected_clients']) ? $info['connected_clients'] : $this->__('N/A'),
+                    'memory' => (isset($info['used_memory_human']) && isset($info['used_memory_peak_human'])) ? $info['used_memory_human'] . ' / ' . $info['used_memory_peak_human'] : $this->__('N/A'),
+                    'role' => (isset($info['role']) ? $info['role'] : $this->__('N/A')) . (
+                        isset($info['connected_slaves']) && (int)$info['connected_slaves'] > 0
+                            ? ' (' . $info['connected_slaves'] . ' slaves)'
+                            : ''
+                        ),
                     'lastsave' => isset($info['rdb_last_save_time'])
                         ? $coreHelper->formatTime(
                             $date->timestamp($info['rdb_last_save_time']),
