@@ -17,7 +17,11 @@
         </reference>
         <reference name="content">
             <block type="redismanager/adminhtml_manager" name="redismanager.manager" template="steverobbins/redismanager/manager.phtml">
+                <block type="redismanager/adminhtml_manager" name="redismanager.grid" template="steverobbins/redismanager/grid.phtml" />
             </block>
         </reference>
     </adminhtml_redismanager_index>
+    <adminhtml_redismanager_grid>
+        <block type="redismanager/adminhtml_manager" name="root" output="toHtml" template="steverobbins/redismanager/grid.phtml" />
+    </adminhtml_redismanager_grid>
 </layout>

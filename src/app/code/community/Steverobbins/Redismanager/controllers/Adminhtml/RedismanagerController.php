@@ -55,6 +55,17 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
         $this->_setActiveMenu('system/redismanager');
         $this->renderLayout();
     }
+    
+    /**
+     * Bring in grid HTML with ajax
+     *
+     * @return void
+     */
+    public function gridAction()
+    {
+        $this->loadLayout()
+            ->renderLayout();
+    }
 
     /**
      * Flush a Redis DB

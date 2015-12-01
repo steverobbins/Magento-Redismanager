@@ -78,4 +78,10 @@
     margin-left: 10px;
 }
 
-\
+.redismanager.refresher {
+    padding-bottom: 20px;
+}
+
+.redismanager.manager {
+    clear: both;
+}
