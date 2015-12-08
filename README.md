@@ -16,7 +16,7 @@ Utility for managing Redis services
 2. Flush databases directly from Magento's admin panel in **System > Redis Management**
  * Though some caches can be cleared via native Cache Management, Magento only deletes certain caches based on key or tag.  There is also no method to clear sessions.  This module gives the admin the ability to execute `flushdb` and `flushall` commands for true cache purging.
 3. Delete cache keys by matched strings
-4. Auto-refresh redis dashboard
+4. Auto-refresh redis dashboard every X seconds
 5. View usage statistics
 
 
