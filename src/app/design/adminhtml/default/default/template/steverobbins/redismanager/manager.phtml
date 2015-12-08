@@ -71,9 +71,8 @@ var redisForm;
 var redismanagerRefresh;
 $('redismanager-refresh-set').on('click', function() {
     var interval = parseInt($('redismanager-refresh-interval').value);
-    if (!interval) {
-        clearInterval(redismanagerRefresh);
-    } else {
+    clearInterval(redismanagerRefresh);
+    if (interval) {
         redisRefreshGrid();
         redismanagerRefresh = setInterval(function() {
             redisRefreshGrid();
