@@ -18,7 +18,8 @@ var redisForm;
 // ]]>
 </script>
 <div class="redismanager refresher">
-    <button id="redismanager-refresh-now" type="button" class="scalable right"><span><span><?php echo $this->__('Refresh') ?></span></span></button>
+    <button id="redismanager-refresh-now" type="button" class="scalable"><span><span><?php echo $this->__('Refresh') ?></span></span></button>
+    <p class="auto"><?php echo $this->__('Refresh every %s seconds', '<input type="text" id="redismanager-refresh-interval" value="0" />') ?> <input type="submit" id="redismanager-refresh-set" value="<?php echo $this->__('Set') ?>" /></p>
 </div>
 <div class="redismanager manager">
     <div id="redismanager-grid">
@@ -67,10 +68,26 @@ var redisForm;
 </div>
 <script>
 // <![CDATA[
-$('redismanager-refresh-now').on('click', function() {
-    new Ajax.Updater('redismanager-grid', '<?php echo $this->getUrl("*/*/grid") ?>', {evalScripts: true});
+var redismanagerRefresh;
+$('redismanager-refresh-set').on('click', function() {
+    var interval = parseInt($('redismanager-refresh-interval').value);
+    if (!interval) {
+        clearInterval(redismanagerRefresh);
+    } else {
+        redisRefreshGrid();
+        redismanagerRefresh = setInterval(function() {
+            redisRefreshGrid();
+        }, interval * 1000);
+    }
     return false;
 });
+$('redismanager-refresh-now').on('click', function() {
+    redisRefreshGrid();
+    return false;
+});
+function redisRefreshGrid() {
+    new Ajax.Updater('redismanager-grid', '<?php echo $this->getUrl("*/*/grid") ?>', {evalScripts: true});
+}
 function redisCheckAll() {
     redisForm.getElements('checkbox').each(function(box) {
         box.checked = true; 

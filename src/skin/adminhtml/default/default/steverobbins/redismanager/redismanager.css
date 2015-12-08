@@ -79,9 +79,18 @@
 }
 
 .redismanager.refresher {
-    padding-bottom: 20px;
+    text-align: right;
 }
 
 .redismanager.manager {
     clear: both;
+}
+
+.redismanager.refresher .auto {
+    margin-top: 10px
+}
+
+#redismanager-refresh-interval {
+    width: 20px;
+    text-align: center;
 }
