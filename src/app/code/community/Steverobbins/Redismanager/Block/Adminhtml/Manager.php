@@ -160,10 +160,14 @@ class Steverobbins_Redismanager_Block_Adminhtml_Manager
         if (!$lastSave) {
             return $this->__(self::DEFAULT_MISSING_STRING);
         }
-        return $this->helper('core')->formatTime(
-            Mage::getSingleton('core/date')->timestamp($lastSave),
-            Mage_Core_Model_Locale::FORMAT_TYPE_LONG
-        );
+        try {
+            return $this->helper('core')->formatTime(
+                Mage::getSingleton('core/date')->timestamp($lastSave),
+                Mage_Core_Model_Locale::FORMAT_TYPE_LONG
+            );
+        } catch (Exception $e) {
+            return '';
+        }
     }
 
     /**
