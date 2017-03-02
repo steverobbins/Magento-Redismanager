@@ -15,11 +15,15 @@
     <menu>
         <system>
             <children>
-                <redismanager translate="title">
-                    <title>Redis Management</title>
-                    <sort_order>95</sort_order>
-                    <action>adminhtml/redismanager</action>
-                </redismanager>
+                <cache>
+                    <children>
+                        <redismanager translate="title">
+                            <title>Redis Management</title>
+                            <sort_order>95</sort_order>
+                            <action>adminhtml/redismanager</action>
+                        </redismanager>
+                    </children>
+                </cache>
             </children>
         </system>
     </menu>
