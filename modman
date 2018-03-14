@@ -3,4 +3,5 @@ src/app/code/community/Steverobbins/Redismanager                              ap
 src/app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml app/design/adminhtml/default/default/layout/steverobbins/redismanager.xml
 src/app/design/adminhtml/default/default/template/steverobbins/redismanager   app/design/adminhtml/default/default/template/steverobbins/redismanager
 src/app/locale/en_US/Steverobbins_Redismanager.csv                            app/locale/en_US/Steverobbins_Redismanager.csv
+src/app/locale/ko_KR/Steverobbins_Redismanager.csv                            app/locale/ko_KR/Steverobbins_Redismanager.csv
 src/skin/adminhtml/default/default/steverobbins/redismanager                  skin/adminhtml/default/default/steverobbins/redismanager

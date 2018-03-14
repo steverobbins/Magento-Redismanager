@@ -1,0 +1,33 @@
+"%s database flushed","%s 데이터베이스를 비웠습니다"
+"Automatically detect Redis services","자동적으로 Redis서비스 찾아내기"
+Back,뒤로가기
+"Connected Clients","연결된 클라이언트"
+Database,데이터베이스
+"Delete Keys","키 삭제하기"
+"Delete Matching Keys","매칭 키 삭제하기"
+"Flush DB","DB 비우기"
+"Flush Databases","데이터베이스들 비우기"
+Host,호스트
+"If No, use manual configuration below","'아니오'로 하면, 아래 수동설정을 사용합니다"
+Keys,키
+"Keys for %s","%s용 키"
+"Last Save","최근저장일자"
+"Manual Configuration","수동설정"
+"Matched Keys (one per line):","매치된 키 (한줄에 하나씩):"
+"Memory / Peak Memory","메모리/최고피크 메모리"
+Name,이름
+"No Redis services were found.","발견된 Redis서비스가 없습니다."
+Port,포트
+"Redis Caches & Sessions","Redis캐시및 세션"
+"Redis Manager","Redis 관리자"
+Role,역할
+Session,세션
+Settings,세팅
+Slaves,Slaves
+Statistics,분석
+System,시스템
+"Total: %s","총: %s"
+"Unable to flush Redis database","Redis데이터베이스를 비울수 없습니다"
+Uptime,가동시간
+"View Keys","키 보기"
+view,보기
