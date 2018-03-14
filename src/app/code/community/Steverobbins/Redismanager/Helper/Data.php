@@ -65,10 +65,7 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
                 $config = Mage::app()->getConfig();
                 foreach (array('cache', 'full_page_cache', 'fpc') as $cacheType) {
                     $node = $config->getXpath('global/' . $cacheType . '[1]');
-                    if (isset($node[0]->backend) && in_array((string)$node[0]->backend, array(
-                        'Cm_Cache_Backend_Redis',
-                        'Mage_Cache_Backend_Redis'
-                    ))) {
+                    if (isset($node[0]->backend) && in_array((string)$node[0]->backend, array('Cm_Cache_Backend_Redis', 'Mage_Cache_Backend_Redis'))) {
                         $this->_services[] = $this->_buildServiceArray(
                             $this->__(str_replace('_', ' ', uc_words($cacheType))),
                             $node[0]->backend_options->server,
