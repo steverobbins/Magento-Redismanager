@@ -59,7 +59,6 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                             <comment>Flush all specified Redis databases whenever Magento fires an adminhtml_cache_flush_system OR adminhtml_cache_flush_all observer event.</comment>
-                            <depends><auto>0</auto></depends>
                         </syncflush>
                     </fields>
                 </settings>
