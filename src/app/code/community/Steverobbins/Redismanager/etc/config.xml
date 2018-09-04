@@ -14,7 +14,7 @@
 <config>
     <modules>
         <Steverobbins_Redismanager>
-            <version>1.4.3</version>
+            <version>1.4.5</version>
         </Steverobbins_Redismanager>
     </modules>
     <global>
@@ -62,6 +62,26 @@
                 </Steverobbins_Redismanager>
             </modules>
         </translate>
+        <events>
+            <adminhtml_cache_flush_all>
+                <observers>
+                    <mageboost>
+                        <type>singleton</type>
+                        <class>redismanager/observer</class>
+                        <method>adminhtml_cache_flush_all</method>
+                    </mageboost>
+                </observers>
+            </adminhtml_cache_flush_all>
+            <adminhtml_cache_flush_system>
+                <observers>
+                    <mageboost>
+                        <type>singleton</type>
+                        <class>redismanager/observer</class>
+                        <method>adminhtml_cache_flush_system</method>
+                    </mageboost>
+                </observers>
+            </adminhtml_cache_flush_system>
+        </events>
     </adminhtml>
     <default>
         <redismanager>

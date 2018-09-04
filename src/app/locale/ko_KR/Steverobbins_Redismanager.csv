@@ -1,4 +1,6 @@
-"%s database flushed","%s 데이터베이스를 비웠습니다"
+"%s key(s) cleared","%s key(s) cleared"
+"%s database flushed.","%s 데이터베이스를 비웠습니다"
+"Refresh every %s seconds","Refresh every %s seconds"
 "Automatically detect Redis services","자동적으로 Redis서비스 찾아내기"
 Back,뒤로가기
 "Connected Clients","연결된 클라이언트"
@@ -31,3 +33,7 @@ System,시스템
 Uptime,가동시간
 "View Keys","키 보기"
 view,보기
+"When using the synchronized flushes and Cm_RedisSession, it is recommended that the Cm_RedisSession database is not listed here so that no sessions are lost.","When using the synchronized flushes and Cm_RedisSession, it is recommended that the Cm_RedisSession database is not listed here so that no sessions are lost."
+"Synchronize with Magento cache flushes","Synchronize with Magento cache flushes"
+"Flush all specified Redis databases whenever Magento fires an adminhtml_cache_flush_system OR adminhtml_cache_flush_all observer event.","Flush all specified Redis databases whenever Magento fires an adminhtml_cache_flush_system OR adminhtml_cache_flush_all observer event."
+"Redismanager has observed a cache flush by Magento, flushing Redis...","Redismanager has observed a cache flush by Magento, flushing Redis..."
