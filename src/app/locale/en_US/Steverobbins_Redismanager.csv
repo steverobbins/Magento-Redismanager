@@ -1,4 +1,6 @@
-"%s database flushed","%s database flushed"
+"%s key(s) cleared","%s key(s) cleared"
+"%s database flushed.","%s database flushed."
+"Refresh every %s seconds","Refresh every %s seconds"
 "Automatically detect Redis services","Automatically detect Redis services"
 Back,Back
 "Connected Clients","Connected Clients"
@@ -31,3 +33,7 @@ System,System
 Uptime,Uptime
 "View Keys","View Keys"
 view,view
+"When using the synchronized flushes and Cm_RedisSession, it is recommended that the Cm_RedisSession database is not listed here so that no sessions are lost.","When using the synchronized flushes and Cm_RedisSession, it is recommended that the Cm_RedisSession database is not listed here so that no sessions are lost."
+"Synchronize with Magento cache flushes","Synchronize with Magento cache flushes"
+"Flush all specified Redis databases whenever Magento fires an adminhtml_cache_flush_system OR adminhtml_cache_flush_all observer event.","Flush all specified Redis databases whenever Magento fires an adminhtml_cache_flush_system OR adminhtml_cache_flush_all observer event."
+"Redismanager has observed a cache flush by Magento, flushing Redis...","Redismanager has observed a cache flush by Magento, flushing Redis..."
