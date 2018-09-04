@@ -22,8 +22,7 @@
  * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
  * @link      https://github.com/steverobbins/Magento-Redismanager
  */
-class Steverobbins_Redismanager_Model_Backend_Redis_Cm
-    extends Cm_Cache_Backend_Redis
+class Steverobbins_Redismanager_Model_Backend_Redis_Cm extends Cm_Cache_Backend_Redis
 {
     /**
      * Get redis client

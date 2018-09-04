@@ -94,6 +94,53 @@ class Steverobbins_Redismanager_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
+     * Perform a flushAll when synchflush is enabled (for use in the event observers)
+     *
+     * @return void
+     */
+    public function flushAllByObserver()
+    {
+        if ($this->getConfig('syncflush')) {
+            Mage::getSingleton('core/session')
+                ->addSuccess('Redismanager has observed a cache flush by Magento, flushing Redis...');
+            $this->flushAll();
+        }
+    }
+
+    /**
+     * Flush all Redis caches
+     *
+     * @param string $flushThis
+     * @return void
+     */
+    public function flushAll($flushThis = null)
+    {
+        $flushed = array();
+        foreach ($this->getServices() as $service) {
+            $serviceMatch = $service['host'] . ':' . $service['port'];
+            if (in_array($serviceMatch, $flushed)
+                || (!is_null($flushThis) && $flushThis != $serviceMatch)
+            ) {
+                continue;
+            }
+            try {
+                $this->getRedisInstance(
+                    $service['host'],
+                    $service['port'],
+                    $service['password'],
+                    $service['db']
+                )->getRedis()->flushAll();
+                $flushed[] = $serviceMatch;
+                $serviceName = $service['name'] . ' (' . $service['host'] . ':' . $service['port'] . ')';
+                Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceName));
+            } catch (Exception $e) {
+                Mage::getSingleton('core/session')->addError($e->getMessage());
+            }
+        }
+        return $flushed;
+    }
+
+    /**
      * Assign values with casting
      *
      * @param  string $name
