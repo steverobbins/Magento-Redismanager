@@ -68,7 +68,7 @@
                     <mageboost>
                         <type>singleton</type>
                         <class>redismanager/observer</class>
-                        <method>adminhtml_cache_flush_all</method>
+                        <method>cacheFlushAll</method>
                     </mageboost>
                 </observers>
             </adminhtml_cache_flush_all>
@@ -77,7 +77,7 @@
                     <mageboost>
                         <type>singleton</type>
                         <class>redismanager/observer</class>
-                        <method>adminhtml_cache_flush_system</method>
+                        <method>cacheFlushSystem</method>
                     </mageboost>
                 </observers>
             </adminhtml_cache_flush_system>
@@ -87,6 +87,7 @@
         <redismanager>
             <settings>
                 <auto>1</auto>
+                <syncflush>0</syncflush>
             </settings>
         </redismanager>
     </default>
