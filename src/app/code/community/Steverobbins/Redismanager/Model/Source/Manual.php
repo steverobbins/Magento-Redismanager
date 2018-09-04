@@ -22,8 +22,7 @@
  * @license   http://creativecommons.org/licenses/by/3.0/deed.en_US Creative Commons Attribution 3.0 Unported License
  * @link      https://github.com/steverobbins/Magento-Redismanager
  */
-class Steverobbins_Redismanager_Model_Source_Manual
-    extends Mage_Adminhtml_Model_System_Config_Backend_Serialized_Array
+class Steverobbins_Redismanager_Model_Source_Manual extends Mage_Adminhtml_Model_System_Config_Backend_Serialized_Array
 {
     /**
      * Event prefix for observers

@@ -1,0 +1,39 @@
+"%s key(s) cleared","%s key(s) opgeschoond"
+"%s database flushed.","%s database geflushed."
+"Refresh every %s seconds","Ververs iedere %s seconden"
+"Automatically detect Redis services","Automatisch Redis services detecteren"
+Back,Terug
+"Connected Clients","Verbonden Clients"
+Database,Database
+"Delete Keys","Verwijder Keys"
+"Delete Matching Keys","Verwijder Overeenkomende Keys"
+"Flush DB","Flush DB"
+"Flush Databases","Flush Databases"
+Host,Host
+"If No, use manual configuration below","Wanneer Nee, gebruik handmatige configuratie hieronder"
+Keys,Keys
+"Keys for %s","Keys voor %s"
+"Last Save","Laatst Opgeslagen"
+"Manual Configuration","Handmatige Configuratie"
+"Matched Keys (one per line):","Overeenkomende Keys (een per regel):"
+"Memory / Peak Memory","Geheugenverbruik / Piek Geheugenverbruik"
+Name,Naam
+"No Redis services were found.","Geen Redis services werden gevonden."
+Port,Poort
+"Redis Caches & Sessions","Redis Caches & Sessions"
+"Redis Manager","Redis Manager"
+Role,Rol
+Session,Sessie
+Settings,Instellingen
+Slaves,Slaves
+Statistics,Statistieken
+System,Systeem
+"Total: %s","Totaal: %s"
+"Unable to flush Redis database","Kan Redis database niet flushen"
+Uptime,Uptime
+"View Keys","Bekijk Keys"
+view,bekijk
+"When using the synchronized flushes and Cm_RedisSession, it is recommended that the Cm_RedisSession database is not listed here so that no sessions are lost.","Wanneer je de gesynchroniseerde flushes samen met Cm_RedisSession gebruikt is het aan te raden om de Cm_RedisSession database niet op te geven zodat er geen sessies verloren gaan."
+"Synchronize with Magento cache flushes","Synchroniseer met Magento cache flushes"
+"Flush all specified Redis databases whenever Magento fires an adminhtml_cache_flush_system OR adminhtml_cache_flush_all observer event.","Flush alle Redis databases wanneer Magento een adminhtml_cache_flush_system OF adminhtml_cache_flush_all observer event afvuurt."
+"Redismanager has observed a cache flush by Magento, flushing Redis...","Redismanager heeft een cache flush van Magento voorbij zien komen, bezig met flushen van Redis..."

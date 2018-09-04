@@ -148,28 +148,9 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
     public function flushAllAction()
     {
         $flushThis = $this->getRequest()->getParam('host', null);
-        $flushed   = array();
-        foreach ($this->_getHelper()->getServices() as $service) {
-            $serviceMatch = $service['host'] . ':' . $service['port'];
-            if (in_array($serviceMatch, $flushed)
-                || (!is_null($flushThis) && $flushThis != $serviceMatch)
-            ) {
-                continue;
-            }
-            try {
-                $this->_getHelper()->getRedisInstance(
-                    $service['host'],
-                    $service['port'],
-                    $service['password'],
-                    $service['db']
-                )->getRedis()->flushAll();
-                $flushed[] = $serviceMatch;
-                Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceMatch));
-            } catch (Exception $e) {
-                Mage::getSingleton('core/session')->addError($e->getMessage());
-            }
+        if (is_array($this->_getHelper()->flushAll($flushThis))) {
+            $this->_redirect('*/*');
         }
-        $this->_redirect('*/*');
     }
 
     /**
@@ -214,7 +195,7 @@ class Steverobbins_Redismanager_Adminhtml_RedismanagerController
                 $service['db']
             );
             $redis->clean(Zend_Cache::CLEANING_MODE_ALL);
-            Mage::getSingleton('core/session')->addSuccess($this->__('%s database flushed', $service['name']));
+            Mage::getSingleton('core/session')->addSuccess($this->__('%s database flushed.', $service['name']));
         } catch (Exception $e) {
             Mage::getSingleton('core/session')->addError($e->getMessage());
         }
