@@ -18,7 +18,7 @@ Utility for managing Redis services
 3. Delete cache keys by matched strings
 4. Auto-refresh redis dashboard every X seconds
 5. View usage statistics
-
+6. Synchonize to Magento flushes: Redismanager listens for the flush_system and flush_all (basically both top-right cache flush buttons on the Cache control page) events and (if enabled) flushes all Redis instances. (If you use Redis for your session management, be sure to use manual configuration and do NOT include the Cm_RedisSession instance).
 
 # Screenshots
 
@@ -50,6 +50,8 @@ Utility for managing Redis services
   * You may have incorrectly configured your settings.  Check you settings in System > Config > Advanced > Redis Management.  Double check your Manual Configuration or try changing `Automatically detect Redis services` to `Yes`
 * What versions of Magento are supported?
   * This module has been tested on CE 1.7, 1.8, 1.9 and EE 1.12, 1.13, 1.14, however it should work with any version.
+* Has the module been translated?
+  * Yes. From the original English (en_EN) to Korean (ko_KR) and Dutch (nl_NL).. feel free to contribute!
 
 # Support
 
