@@ -65,20 +65,20 @@
         <events>
             <adminhtml_cache_flush_all>
                 <observers>
-                    <steverobbins_redismanager>
+                    <redismanager>
                         <type>singleton</type>
                         <class>redismanager/observer</class>
                         <method>cacheFlushAll</method>
-                    </steverobbins_redismanager>
+                    </redismanager>
                 </observers>
             </adminhtml_cache_flush_all>
             <adminhtml_cache_flush_system>
                 <observers>
-                    <steverobbins_redismanager>
+                    <redismanager>
                         <type>singleton</type>
                         <class>redismanager/observer</class>
                         <method>cacheFlushSystem</method>
-                    </steverobbins_redismanager>
+                    </redismanager>
                 </observers>
             </adminhtml_cache_flush_system>
         </events>
