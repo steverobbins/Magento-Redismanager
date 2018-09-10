@@ -65,20 +65,20 @@
         <events>
             <adminhtml_cache_flush_all>
                 <observers>
-                    <mageboost>
+                    <steverobbins_redismanager>
                         <type>singleton</type>
                         <class>redismanager/observer</class>
                         <method>cacheFlushAll</method>
-                    </mageboost>
+                    </steverobbins_redismanager>
                 </observers>
             </adminhtml_cache_flush_all>
             <adminhtml_cache_flush_system>
                 <observers>
-                    <mageboost>
+                    <steverobbins_redismanager>
                         <type>singleton</type>
                         <class>redismanager/observer</class>
                         <method>cacheFlushSystem</method>
-                    </mageboost>
+                    </steverobbins_redismanager>
                 </observers>
             </adminhtml_cache_flush_system>
         </events>
